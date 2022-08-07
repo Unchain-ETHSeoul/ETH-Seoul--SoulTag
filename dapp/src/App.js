@@ -4,7 +4,9 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import MainPage from './pages/MainPage';
-import TestPage from './pages/TestPage';
+import TestPage from './pages/TestPage'
+
+import 'bootstrap/dist/css/bootstrap.min.css';;
 
 function App() {
   return (

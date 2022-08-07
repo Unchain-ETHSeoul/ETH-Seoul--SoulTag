@@ -6,7 +6,6 @@ const MainPage = () => {
     return(
         <div>
             <Main/>
-            <div>asdf</div>
         </div>        
     );
 }

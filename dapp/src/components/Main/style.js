@@ -15,7 +15,3 @@ export const Row = styled.div`
 export const Column_Center = styled.div`
     vertical-align: middle;
 `
-
-export const SBT1 = styled.div`
-    max-width: 100px;
-`

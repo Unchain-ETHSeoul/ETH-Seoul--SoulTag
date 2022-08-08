@@ -8,6 +8,20 @@ export const Container = styled.div`
     justify-content: center;
 `
 
+export const Account1 = styled.div`
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
+export const Account2 = styled.div`
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
 export const Row = styled.div`
     float: left;
 `
@@ -17,5 +31,22 @@ export const Column_Center = styled.div`
 `
 
 export const SBT1 = styled.div`
-    max-width: 100px;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
+export const SBT2 = styled.div`
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
+export const SBT3 = styled.div`
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `

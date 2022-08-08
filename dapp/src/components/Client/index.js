@@ -7,6 +7,10 @@ import Modal from 'react-bootstrap/Modal';
 
 import Form from 'react-bootstrap/Form';
 
+/*
+Client scenario
+*/
+
 const Client = () => {
 
     const [show, setShow] = useState(false);

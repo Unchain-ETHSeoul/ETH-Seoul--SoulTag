@@ -8,7 +8,25 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 /*
+
 Client scenario
+
+Premise
+p1) The client is subscribed to the service.
+p2) There are events that clients can apply for.
+p3) All of these can be confirmed on one screen.
+
+1. The client account (Ethereum) should be displayed on the top bar. The same goes for logging out.
+2. The client clicks on the event and fills out a kind of application (application form).
+3. If you hover over (or click) Help in the form, the Help tooltip appears.
+3-1. In the case of the form to fill out, first of all, include only four [Name (required), Nickname (required), Age (Optional), Gender (Optional) ]). After that, the form is added
+3-2. If you can get information through my did, it will be automatically filled in or only ask for additional information you need.
+4. If the required fill-in form is blank, the Submit (Apply) button is disabled.
+5. If you have filled out the form according to your requirements, click the Apply button.
+6. Whether the application has been received or completed is displayed through the warning window.
+
+Gogogo
+
 */
 
 const Client = () => {

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import * as S from './style';
 
+import { useWeb3React } from '@web3-react/core';
+import { injected } from '../../lib/connector';
+
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
@@ -18,6 +21,19 @@ import ColoredHR from '../Elements/ColoredHR';
 
 const Main = () => {
 
+    const { chainedId, account, active, activate, deactivate } = useWeb3React();
+    const handdleConnect = () => {
+        if(active) {
+          deactivate();
+          return;
+        }
+        activate(injected, (error) => {
+            if('/No Ethereum provider was found on window.ethereum/'.test(error)) {
+                window.open('https://metamask.io/download.html');
+            }
+        });
+    
+    }
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
 
@@ -53,10 +69,10 @@ const Main = () => {
                     <Row>
                         <Col><ListGroup horizontal>
                             <ListGroup.Item>Address Img</ListGroup.Item>
-                            <ListGroup.Item><Col ></Col>Address</ListGroup.Item>
+                            <ListGroup.Item><Col ></Col>Account: {account}</ListGroup.Item>
                         </ListGroup></Col>
                         <Col><Button onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
-                        <Col><Button onClick={() => printMsg("To be implemented...")}>Logout</Button></Col>
+                        <Col><Button onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
                     </Row>
 
                     <ColoredHR></ColoredHR>
@@ -70,7 +86,7 @@ const Main = () => {
                                 <Row>This part can be added dynamically, later.
                                     <Stack gap={3}>
                                         <ListGroup horizontal>
-                                            <ListGroup.Item>FileCoin</ListGroup.Item>
+                                            <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item>blah blah no example</ListGroup.Item>
                                             <ListGroup.Item><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></ListGroup.Item>
                                         </ListGroup>

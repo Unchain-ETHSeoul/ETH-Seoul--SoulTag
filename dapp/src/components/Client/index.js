@@ -7,10 +7,6 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/Container';
-import Stack from 'react-bootstrap/Stack';
-
-
 
 
 /*

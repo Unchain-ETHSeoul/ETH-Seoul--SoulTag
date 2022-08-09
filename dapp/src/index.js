@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 function getLibrary(provider) {
   const library = new Web3Provider(provider, "any");
+  console.log("privider: "+library+", "+provider);
   return library;
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import * as S from './style';
-import './style.css';
 
 import { useWeb3React } from '@web3-react/core';
 import { injected } from '../../lib/connector';
@@ -11,6 +10,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 import Form from 'react-bootstrap/Form';
 
 import Container from 'react-bootstrap/Container';
@@ -19,21 +21,23 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 
 import ColoredHR from '../Elements/ColoredHR';
+import HostPage from '../../pages/HostPage';
+import ClientPage from '../../pages/ClientPage';
 
 const Main = () => {
 
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
     const handdleConnect = () => {
-        if(active) {
-          deactivate();
-          return;
+        if (active) {
+            deactivate();
+            return;
         }
         activate(injected, (error) => {
-            if('/No Ethereum provider was found on window.ethereum/'.test(error)) {
+            if ('/No Ethereum provider was found on window.ethereum/'.test(error)) {
                 window.open('https://metamask.io/download.html');
             }
         });
-    
+
     }
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -62,7 +66,7 @@ const Main = () => {
         alert(msg);
     }
 
-    return(
+    return (
         <S.Container>
             <Card>
                 <div>Main Page Prototype</div>
@@ -91,14 +95,14 @@ const Main = () => {
                                             <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
                                         </ListGroup>
-                                        
-                                        <ListGroup horizontal = 'sm'>
+
+                                        <ListGroup horizontal='sm'>
                                             <ListGroup.Item><S.SBT1>ETH</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'SM' example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => handleShow('md-down')}>View</Button></S.SBT3></ListGroup.Item>
                                         </ListGroup>
-                                        
-                                        <ListGroup horizontal = 'md'>
+
+                                        <ListGroup horizontal='md'>
                                             <ListGroup.Item><S.SBT1>Polygon</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
@@ -112,8 +116,8 @@ const Main = () => {
                                     <Col><Card.Title>My STT</Card.Title></Col><Col></Col><Col></Col>
                                 </Row>
                                 <Row>This part also can be added dynamically, later.
-                                    <Stack gap={3}>                                        
-                                        <ListGroup horizontal = 'md'>
+                                    <Stack gap={3}>
+                                        <ListGroup horizontal='md'>
                                             <ListGroup.Item><S.SBT1>MYSTT1</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
@@ -147,47 +151,47 @@ const Main = () => {
                 <Modal.Body>
                     <h4>ETH(example)</h4>
                     <p>Modal body content</p>
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim1(name)`}
                     />
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim2(age)`}
                     />
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim3(gender)`}
                     />
                     <h4>Header2(optional?)</h4>
                     <p>Modal body content</p>
-                    <Form.Check 
+                    <Form.Check
                         type="switch"
                         id="custom-switch"
                         label="Include or not?"
                         onChange={onSwitchAction}
                         checked={isSwitchOn}
                     />
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim1(name)`}
-                        disabled = {!isSwitchOn}
+                        disabled={!isSwitchOn}
                     />
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim2(age)`}
-                        disabled = {!isSwitchOn}
+                        disabled={!isSwitchOn}
                     />
-                    <Form.Check 
+                    <Form.Check
                         type="checkbox"
                         id={`default-checkbox`}
                         label={`claim3(gender)`}
-                        disabled = {!isSwitchOn}
+                        disabled={!isSwitchOn}
                     />
                     <Button onClick={() => printMsg("To be implemented...")}>Mint</Button>
                 </Modal.Body>

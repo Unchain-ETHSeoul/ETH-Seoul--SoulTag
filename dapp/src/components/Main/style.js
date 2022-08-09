@@ -50,3 +50,9 @@ export const SBT3 = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
 `
+
+export const SBT4 = styled.div`
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+`

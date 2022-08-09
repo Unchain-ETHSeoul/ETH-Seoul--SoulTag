@@ -4,67 +4,65 @@ import * as S from './style';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+//import Dropdown from 'react-bootstrap/Dropdown';
+//import DropdownButton from 'react-bootstrap/DropdownButton';
+//import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 /*
 
-Host scenario
 
-Premise
-p1) The host is subscribed to this service.
-p2) The host does not currently host any events.
-
-1. When the host presses the host button, the event writing form appears.
-2. In the event creation form, [agree to various things], [enter basic information], and write [event participation conditions].
-3. If you do not fill out the required form, you cannot click the Submit button.
-4. When you have completed all required forms, click the Submit button.
-4-1. When you click the submit button, the event you created appears right below (on the same page).
-4-2. If you click the created event, the event contents created in the form are displayed.
-4-3. This created event can be added dynamically in the future to compose a slightly natural UI.
-
-Gogogo
 
 */
 
 const Host = () => {
 
-    
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [isSwitchOn, setIsSwitchOn] = useState(false);
+    //const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [property, setProperty] = useState([]);
+    const [cnt, setCnt] = useState(0);
 
     //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
 
-    let property_cnt = 0;
-    let Props_Arr = [];
+    //let property_cnt = 0;
 
     useEffect(()=>{
         setProperty([... property, {
-            id: property_cnt,
-            text: ""
+            id: 0,
+            propname: "",
+            proptype: ""
         }]);
+        setCnt(cnt+1);
     },[])
 
-    const onSwitchAction = () => {
-        setIsSwitchOn(!isSwitchOn);
-        console.log(isSwitchOn);
-    };
+    function hostEvent() {
+        const jsonContent = JSON.stringify(property);
+        console.log(jsonContent);
+        hostClose();
+    }
+
+    function hostClose() {
+        setProperty([]);
+        handleClose();
+        setProperty([{
+            id: 0,
+            propname: "",
+            proptype: ""
+        }]);
+        setCnt(0+1);
+    }
 
     function addProp() {
-        property_cnt++;
-        //Props_Arr.push( {id: property_cnt, text:""} );
+        setCnt(cnt+1);
         setProperty([... property, {
-            id: property_cnt,
-            text: ""
+            id: cnt,
+            propname: "",
+            proptype: ""
         }]);
     }
 
@@ -78,13 +76,20 @@ const Host = () => {
     }
 
     useEffect(() => {
-        console.log("changed");
-        console.log(property);
+        //console.log("changed");
         drawprops();
+        //console.log(property);
     },[property]);
 
+    function handleChange(event) {
+        let fieldName = event.target.name;
+        let fieldVal = event.target.value;
+        //console.log(fieldName + " " +fieldVal);
+        //this.setState({form: {...this.state.form, [fieldName]: fleldVal}})
+    }
+
     function drawprops() {
-        console.log("asdf");
+        //console.log("asdf");
         return(
             property.map((item,index) => (
                 <Form.Group key={index} as={Row} className="mb-3" controlId={item.id+"form"}>
@@ -93,18 +98,29 @@ const Host = () => {
                     </Form.Label>
                     <Col sm={10}>
                         <S.Property>
-                            <Form.Control type="text" placeholder="Property Name"/>
+                            <Form.Control
+                                type="text"
+                                placeholder="Property Name"
+                                onChange={e => {
+                                    console.log("e.target.value: "+ e.target.value + ", "+index);
+                                    //setType(e.target.value);
+                                    property[index].propname = e.target.value;
+                                    setProperty([... property]);
+                                }}
+                            />
                             <S.ColGap></S.ColGap>
-                            <DropdownButton
-                                as={ButtonGroup}
-                                key={'Secondary'}
-                                id={`dropdown-variants-${'Secondary'}`}
-                                variant={'Secondary'.toLowerCase()}
-                                title={'Type'}
-                            >
-                                <Dropdown.Item eventKey="1">Number</Dropdown.Item>
-                                <Dropdown.Item eventKey="2">Text</Dropdown.Item>
-                            </DropdownButton>
+
+                            <Form.Select aria-label="Default select example"
+                                onChange={e => {
+                                console.log("e.target.value: "+ e.target.value + ", "+index);
+                                //setType(e.target.value);
+                                property[index].proptype = e.target.value;
+                                setProperty([... property]);
+                                }}>
+                                <option>Select Type</option>
+                                <option value="Number">Number</option>
+                                <option value="Text">Text</option>
+                            </Form.Select>
                             <S.ColGap></S.ColGap>
                             <Button variant="outline-danger" key={index}>-</Button>
                         </S.Property>
@@ -120,7 +136,7 @@ const Host = () => {
                 <S.Margin>HOST</S.Margin>
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={hostClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Host Some Event</Modal.Title>
                 </Modal.Header>
@@ -133,10 +149,10 @@ const Host = () => {
                     </Button>{' '}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={hostClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={hostEvent}>
                         HOST!
                     </Button>
                 </Modal.Footer>

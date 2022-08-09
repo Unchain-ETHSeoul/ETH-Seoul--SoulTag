@@ -87,7 +87,7 @@ const Main = () => {
                                 <Row>This part can be added dynamically, later.
                                     <Stack gap={3}>
                                         <ListGroup horizontal >
-                                            <ListGroup.Item className='custom'><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
                                         </ListGroup>

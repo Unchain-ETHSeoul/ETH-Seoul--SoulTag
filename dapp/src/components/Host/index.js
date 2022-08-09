@@ -7,10 +7,12 @@ import Modal from 'react-bootstrap/Modal';
 //import Dropdown from 'react-bootstrap/Dropdown';
 //import DropdownButton from 'react-bootstrap/DropdownButton';
 //import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+
 /*
 
 
@@ -35,11 +37,17 @@ const Host = () => {
     const [eventname, setEventname] = useState("");
     const [events, setEvents] = useState([]);
 
+    const [nowevent, setNowevent] = useState([]);
+
     const [cnt, setCnt] = useState(0);
 
     //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
 
     //let property_cnt = 0;
+
+    let nowpropname;
+    let nowproptype;
+    let nowev;
 
     useEffect(() => {
         setProperty([...property, {
@@ -50,11 +58,19 @@ const Host = () => {
                 proptype: "no"
             }
         }]);
+        setNowevent([{
+            title: "",
+            props: {
+                id: 0,
+                propname: "",
+                proptype: "no"
+            }
+        }])
         setCnt(cnt + 1);
     }, [])
 
     function hostEvent() {
-        setEvents([...events,{
+        setEvents([...events, {
             title: eventname,
             props: property
         }]); // add event
@@ -149,30 +165,71 @@ const Host = () => {
         )
     }
 
-    function drawevents() {
+    function draweventbtn() {
         return (
-            events.map((item, index) => (
-                <Button variant="outline-secondary" size="md" key={index}>
-                    <S.Margin>{item.title}</S.Margin>
-                </Button>
-            ))
+            <>
+                {events.map((item, index) => (
+                    <>
+                        <Button variant="outline-secondary" size="md" key={index} onClick={e => {
+                            console.log(item);
+                            console.log(item.props);
+                            setNowevent(item.props);
+                            nowev = item;
+                            handleeventShow();
+                            //drawevent(item);
+                        }}>
+                            <S.Margin>{item.title}</S.Margin>
+                        </Button>
+
+
+                        <Modal show={eventshow} onHide={handleeventClose}>
+                            <Modal.Header closeButton gap={3}>
+                                <Modal.Title><S.ColGap>Event {nowevent.title == "" ? null : nowevent.title}</S.ColGap></Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                {item.props.map((it, idx) => (
+                                    <h4>{it.props.propname}, {it.props.proptype}</h4>
+                                ))}
+                                {/* {nowevfunc} */}
+                            </Modal.Body>
+                            <Modal.Footer>
+
+                            </Modal.Footer>
+                        </Modal>
+                    </>
+                ))}
+            </>
         )
     }
 
     function allinput() {
-        console.log(eventname);
-        console.log(property);
-        if(eventname==""){
-            return false;
-        }
-        for(var i=0;i<property.length;i++){
-            if(property[i].propname==""){
-                return false;
-            } else if(property[i].proptype=="no"){
-                return false;
+        //console.log("ALLINPUT");
+        //console.log(eventname.length);
+        //console.log(property);
+        for (var i = 0; i < property.length; i++) {
+            //console.log(property[i].props.propname+ ", "+property[i].props.proptype);
+            if (property[i].props.propname == "") {
+                return true;
+            } else if (property[i].props.proptype == "no") {
+                return true;
             }
         }
-        return true;
+        if (eventname == "") {
+            return true;
+        }
+        return false;
+    }
+
+    function noweventprint(item) {
+        console.log(item);
+    }
+
+    function nowevfunc() {
+        return (
+            nowev.map((it, idx) => (
+                <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
+            ))
+        )
     }
 
     return (
@@ -181,17 +238,19 @@ const Host = () => {
                 <S.Margin>HOST</S.Margin>
             </Button>
 
+            {/* properyty input modal */}
             <Modal show={show} onHide={hostClose}>
                 <Modal.Header closeButton gap={3}>
                     <Modal.Title><S.ColGap>Event</S.ColGap></Modal.Title>
                     <Form>
                         <Form.Control
                             type="text"
-                            placeholder="Property Name"
+                            placeholder="Title"
                             onChange={e => {
                                 //console.log("e.target.value: "+ e.target.value + ", "+index);
                                 //setType(e.target.value);
                                 //eventname = e.target.value;
+                                //console.log(e.target.value.length);
                                 setEventname(e.target.value);
                             }}
                         />
@@ -211,17 +270,15 @@ const Host = () => {
                     <Button variant="secondary" onClick={hostClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={hostEvent} disabled={allinput() ? false : true}>
+                    <Button variant="primary" onClick={hostEvent} disabled={allinput()}>
                         HOST!
                     </Button>
                 </Modal.Footer>
             </Modal>
 
-            {drawevents()}
+            {draweventbtn()}
 
-            <Button variant="outline-secondary" size="lg">
-                <S.Margin>ETH</S.Margin>
-            </Button>
+
 
             {/* One Event modal needed */}
         </S.Container>

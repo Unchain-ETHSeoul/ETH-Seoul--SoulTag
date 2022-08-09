@@ -13,12 +13,11 @@ import MainPage from '../../pages/MainPage';
 const Ui = () => {
     return (
         <Tabs
-            defaultActiveKey="profile"
+            defaultActiveKey="main"
             id="uncontrolled-tab-example"
             className="mb-3"
-            activeKey="main"
         >
-            <Tab eventKey="main" title="Main" selected>
+            <Tab eventKey="main" title="Main">
                 <MainPage></MainPage>
             </Tab>
             <Tab eventKey="host" title="Host">

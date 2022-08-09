@@ -11,3 +11,12 @@ export const Container = styled.div`
 export const Margin = styled.div`
     margin: 3rem;
 `
+
+export const Property = styled.div`
+    display: flex;
+    float: left;
+`
+
+export const ColGap = styled.div`
+    margin-right: 10px;
+`

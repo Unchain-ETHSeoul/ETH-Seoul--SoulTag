@@ -4,9 +4,13 @@ import * as S from './style';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import Form from 'react-bootstrap/Form';
-
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 /*
 
 Host scenario
@@ -34,11 +38,79 @@ const Host = () => {
     const handleShow = () => setShow(true);
 
     const [isSwitchOn, setIsSwitchOn] = useState(false);
+    const [property, setProperty] = useState([]);
+
+    //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
+
+    let property_cnt = 0;
+    let Props_Arr = [];
+
+    useEffect(()=>{
+        setProperty([... property, {
+            id: property_cnt,
+            text: ""
+        }]);
+    },[])
 
     const onSwitchAction = () => {
         setIsSwitchOn(!isSwitchOn);
         console.log(isSwitchOn);
     };
+
+    function addProp() {
+        property_cnt++;
+        //Props_Arr.push( {id: property_cnt, text:""} );
+        setProperty([... property, {
+            id: property_cnt,
+            text: ""
+        }]);
+    }
+
+    const deleteProp = (index) => {
+        console.log("click");
+        //property_arr.filter(item => item.id !==index);
+        let propro = property;
+        console.log(index);
+        //propro.splice(index,1);
+        //setProperty([... property]);
+    }
+
+    useEffect(() => {
+        console.log("changed");
+        console.log(property);
+        drawprops();
+    },[property]);
+
+    function drawprops() {
+        console.log("asdf");
+        return(
+            property.map((item,index) => (
+                <Form.Group key={index} as={Row} className="mb-3" controlId={item.id+"form"}>
+                    <Form.Label column sm={2}>
+                        Prop{index+1}
+                    </Form.Label>
+                    <Col sm={10}>
+                        <S.Property>
+                            <Form.Control type="text" placeholder="Property Name"/>
+                            <S.ColGap></S.ColGap>
+                            <DropdownButton
+                                as={ButtonGroup}
+                                key={'Secondary'}
+                                id={`dropdown-variants-${'Secondary'}`}
+                                variant={'Secondary'.toLowerCase()}
+                                title={'Type'}
+                            >
+                                <Dropdown.Item eventKey="1">Number</Dropdown.Item>
+                                <Dropdown.Item eventKey="2">Text</Dropdown.Item>
+                            </DropdownButton>
+                            <S.ColGap></S.ColGap>
+                            <Button variant="outline-danger" key={index}>-</Button>
+                        </S.Property>
+                    </Col>
+                </Form.Group>
+            ))
+        )
+    }
 
     return(
         <S.Container className='d-grid gap-2'>
@@ -51,56 +123,18 @@ const Host = () => {
                     <Modal.Title>Host Some Event</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>ETH(example)</h4>
-                        <p>Modal body content</p>
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim1(name)`}
-                        />
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim2(age)`}
-                        />
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim3(gender)`}
-                        />
-                        <h4>Header2(optional?)</h4>
-                        <p>Modal body content</p>
-                        <Form.Check 
-                            type="switch"
-                            id="custom-switch"
-                            label="Include or not?"
-                            onChange={onSwitchAction}
-                            checked={isSwitchOn}
-                        />
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim1(name)`}
-                            disabled = {!isSwitchOn}
-                        />
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim2(age)`}
-                            disabled = {!isSwitchOn}
-                        />
-                        <Form.Check 
-                            type="checkbox"
-                            id={`default-checkbox`}
-                            label={`claim3(gender)`}
-                            disabled = {!isSwitchOn}
-                        />
-                    </Modal.Body>
+                    <Form>                     
+                        {drawprops()}
+                    </Form>
+                    <Button variant="primary" size="sm" onClick={addProp}>
+                        +
+                    </Button>{' '}
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose} disabled = {!isSwitchOn}>
+                    <Button variant="primary" onClick={handleClose}>
                         HOST!
                     </Button>
                 </Modal.Footer>

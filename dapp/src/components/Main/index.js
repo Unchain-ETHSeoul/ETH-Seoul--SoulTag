@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import * as S from './style';
+import './style.css';
 
 import { useWeb3React } from '@web3-react/core';
 import { injected } from '../../lib/connector';
@@ -19,15 +20,13 @@ import Stack from 'react-bootstrap/Stack';
 
 import ColoredHR from '../Elements/ColoredHR';
 
-
-
 const Main = () => {
 
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
     const handdleConnect = () => {
         if(active) {
           deactivate();
-          return 1;
+          return;
         }
         activate(injected, (error) => {
             if('/No Ethereum provider was found on window.ethereum/'.test(error)) {
@@ -87,8 +86,8 @@ const Main = () => {
                                 </Row>
                                 <Row>This part can be added dynamically, later.
                                     <Stack gap={3}>
-                                        <ListGroup horizontal>
-                                            <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
+                                        <ListGroup horizontal >
+                                            <ListGroup.Item className='custom'><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
                                             <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
                                         </ListGroup>

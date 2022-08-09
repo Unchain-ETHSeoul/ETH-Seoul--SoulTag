@@ -9,10 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
 import Container from 'react-bootstrap/Container';
-import MainPage from '/Users/munchan/Desktop/Bleem/ETH_Seoul/ETHSeoul-SoulTag/dapp/src/pages/MainPage.js';
-
-
-
+import MainPage from '../../pages/MainPage.js';
 
 /*
 

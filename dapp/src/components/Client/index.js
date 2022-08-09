@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import * as S from './style';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/Container';
-import MainPage from '../../pages/MainPage.js';
+
 
 /*
 
@@ -46,30 +44,20 @@ const Client = () => {
         console.log(isSwitchOn);
     };
 
-    const logOut = () => {
-        return(
-            <div>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                    </Routes>
-                </BrowserRouter>
-            </div>
-        )
-    }
-
     return(
-        <S.Container className='d-grid gap-2'>
-            <Container>
-                <Row>
-                    <Col><Button variant="primary">Wallet Connected</Button></Col>
-                    <Col><Button variant="primary" href="/" onClick={() => { alert("logged out."); logOut(); }}>Logout</Button></Col>
+        <S.Container>
+                <Row xs="5">
+                    <Col></Col>
+                    <Col></Col>
+                    <Col></Col>
+                    <Col></Col>
+                    <Col><Button size="lg" variant="primary" href="/" onClick={() => { alert("logged out.") }}>Wallet Connected</Button>{''}</Col>
                 </Row>
-            </Container>
-            <Button variant="outline-secondary" size="lg" onClick={handleShow}>
-                <S.Margin>ETH</S.Margin>
-            </Button>
-
+            
+                <Button variant="outline-secondary" size="lg" onClick={handleShow}>
+                    <S.Margin>ETH</S.Margin>
+                </Button>
+                
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Participate Some Event</Modal.Title>

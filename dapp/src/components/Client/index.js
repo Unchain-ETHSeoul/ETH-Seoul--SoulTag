@@ -76,8 +76,7 @@ const Client = () => {
                             label={`agree(age)`}
                         />
                         <Form.Check 
-                          
-                          type="checkbox"
+                            type="checkbox"
                             id={`default-checkbox`}
                             label={`agree(gender)`}
                         />

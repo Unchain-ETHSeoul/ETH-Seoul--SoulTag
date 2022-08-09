@@ -10,13 +10,12 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
 import Form from 'react-bootstrap/Form';
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
+import Badge from 'react-bootstrap/Badge';
 
 import ColoredHR from '../Elements/ColoredHR';
 
@@ -67,12 +66,14 @@ const Main = () => {
             <Card>
                 <div>Main Page Prototype</div>
                 <Container>
-                    <Row>
+                    <Row xs="5">
                         <Col><ListGroup horizontal>
                             <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
                             <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
                         </ListGroup></Col>
+                        <Col></Col>
                         <Col><Button onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
+                        <Col></Col>
                         <Col><Button onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
                     </Row>
 
@@ -89,19 +90,22 @@ const Main = () => {
                                         <ListGroup horizontal >
                                             <ListGroup.Item className='custom'><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="primary">10</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
                                         
                                         <ListGroup horizontal = 'sm'>
                                             <ListGroup.Item><S.SBT1>ETH</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'SM' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => handleShow('md-down')}>View</Button></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="primary">30</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => handleShow('md-down')}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
                                         
                                         <ListGroup horizontal = 'md'>
                                             <ListGroup.Item><S.SBT1>Polygon</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="primary">50</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
                                     </Stack>
                                 </Row>
@@ -116,7 +120,7 @@ const Main = () => {
                                         <ListGroup horizontal = 'md'>
                                             <ListGroup.Item><S.SBT1>MYSTT1</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
                                     </Stack>
                                 </Row>

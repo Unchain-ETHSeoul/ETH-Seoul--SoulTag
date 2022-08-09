@@ -19,13 +19,15 @@ import Stack from 'react-bootstrap/Stack';
 
 import ColoredHR from '../Elements/ColoredHR';
 
+
+
 const Main = () => {
 
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
     const handdleConnect = () => {
         if(active) {
           deactivate();
-          return;
+          return 1;
         }
         activate(injected, (error) => {
             if('/No Ethereum provider was found on window.ethereum/'.test(error)) {

@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const Margin = styled.div`
-    margin: 3rem;
+    margin: 1rem;
 `
 
 export const Property = styled.div`

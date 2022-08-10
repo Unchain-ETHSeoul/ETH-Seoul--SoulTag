@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
+import { IpfsImage } from 'react-ipfs-image';
 
 const Test = () => {
 
     const [fileImg, setFileImg] = useState(null);
+    const [imgsrc, setImgsrc] = useState("");
+    const [ihash, setIhash]=useState("");
+    let src="";
 
-    const sendFileToIPFS = async (e) => {
+    //console.log(imgsrc);
+    //console.log(ihash);
+
+    const sendImageToIPFSPinata = async (e) => {
 
         if (fileImg) {
             try {
@@ -28,10 +35,16 @@ const Test = () => {
                     },
                 });
 
-                console.log(resFile);
+                //console.log(resFile);
+                setIhash(resFile.data.IpfsHash);
 
                 const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
-                console.log(ImgHash);
+                //console.log(ImgHash);
+
+                setImgsrc(ImgHash);
+
+                src = "ipfs://";
+                //src.append(ImgHash);
                 //Take a look at your Pinata Pinned section, you will see a new file added to you list.   
 
             } catch (error) {
@@ -44,7 +57,9 @@ const Test = () => {
     return (
         <form >
             <input type="file" onChange={(e) => setFileImg(e.target.files[0])} required />
-            <button type='button' onClick={sendFileToIPFS}>Mint NFT</button>
+            <button type='button' onClick={sendImageToIPFSPinata}>Mint NFT</button>
+            <br></br>
+            <IpfsImage hash='QmTU6iFCg2KkF5BvSpw446BAP9o7EqtbFsdoRhUVnbQH2D' gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage>
         </form>
     )
 }

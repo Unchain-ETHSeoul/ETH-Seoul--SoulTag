@@ -6,7 +6,6 @@ const TestPage = () => {
     return(
         <div>
             <Test/>
-            <div>asdf</div>
         </div>        
     );
 }

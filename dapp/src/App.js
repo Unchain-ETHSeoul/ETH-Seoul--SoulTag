@@ -15,14 +15,12 @@ import Navbar from './components/Elements/Navbar';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';;
 
 function App() {
-
   return (
     <div className="App">
-      {/* <Navbar></Navbar> */}
-     
+      {/* <Navbar></Navbar> */} 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UiPage />} />

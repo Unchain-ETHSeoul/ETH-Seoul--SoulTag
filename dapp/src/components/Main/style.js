@@ -31,27 +31,21 @@ export const Column_Center = styled.div`
 `
 
 export const SBT1 = styled.div`
-    width: 100px;
+    width: 80px;
+    height: 100px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `
 
 export const SBT2 = styled.div`
-    width: 300px;
+    width: 400px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `
 
 export const SBT3 = styled.div`
-    width: 100px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
-
-export const SBT4 = styled.div`
     width: 100px;
     white-space: nowrap;
     overflow: hidden;

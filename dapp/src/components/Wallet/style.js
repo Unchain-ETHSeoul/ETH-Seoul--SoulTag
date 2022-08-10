@@ -50,3 +50,36 @@ export const SBT3 = styled.div`
     white-space: nowrap;
     overflow: hidden;
 `
+
+export const EventUI = styled.div`
+    display: block;
+    width: 250px;
+    height: 300px;
+    background-color: white;
+    border: 2px yellow solid;
+    box-shadow: 5px 10px 20px red;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+`
+
+export const MainUi = styled.div`
+    display: block;
+    margin: auto;
+`
+
+
+
+export const Margin = styled.div`
+    margin: 1rem;
+`
+
+export const Property = styled.div`
+    display: flex;
+    float: left;
+`
+
+export const ColGap = styled.div`
+    margin-right: 10px;
+`

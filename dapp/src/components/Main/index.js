@@ -70,49 +70,45 @@ const Main = () => {
 
     return (
         <S.Container>
-            <h1 className='writingColor'>Main Page Prototype</h1>
             <Card>
                 <Card.Body className='App'>
-                    <Container>
-                        <Row xs="5">
+                        <Row xs="3">
                             <Col><ListGroup horizontal>
                                 <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
                                 <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
                             </ListGroup></Col>
-                            <Col></Col>
-                            <Col><Button onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
-                            <Col></Col>
-                            <Col><Button onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
+                            <Col><Button className='b' variant='secondary' onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
+                            <Col><Button className='b' variant='secondary' onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
                         </Row>
-
+                        <br/><br/>
                         <ColoredHR></ColoredHR>
-
+                        {/* SBT */}
                         <Row>
                             <Col>
                                 <Row>
-                                    <Col><Card.Title className='writingColor' align='left'>My SBT</Card.Title></Col><Col></Col><Col></Col>
+                                    <Col><Card.Title className='c' align='left'>My SBT</Card.Title></Col><Col></Col><Col></Col>
                                 </Row>
-                                <Row><p className='writingColor' align='left'>This part can be added dynamically, later.</p>
+                                <Row><p className='c' align='left'>This part can be added dynamically, later.</p>
                                     <Stack gap={3}>
-                                        <ListGroup horizontal >
+                                        <ListGroup horizontal className='d'>
                                             <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Badge bg="primary">10</Badge></S.SBT3></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="secondary">10</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
-
-                                        <ListGroup horizontal='sm'>
+                                            <br/>
+                                        <ListGroup horizontal='sm' className='d'>
                                             <ListGroup.Item><S.SBT1>ETH</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'SM' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Badge bg="primary">30</Badge></S.SBT3></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => handleShow('md-down')}>View</Button></S.SBT4></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="secondary">30</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => handleShow('md-down')}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
-
-                                        <ListGroup horizontal='md'>
+                                            <br/>
+                                        <ListGroup horizontal='md' className='d'>
                                             <ListGroup.Item><S.SBT1>Polygon</S.SBT1></ListGroup.Item>
                                             <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT3><Badge bg="primary">50</Badge></S.SBT3></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT3><Badge bg="secondary">50</Badge></S.SBT3></ListGroup.Item>
+                                            <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
                                         </ListGroup>
                                     </Stack>
                                 </Row>
@@ -131,7 +127,6 @@ const Main = () => {
                                     </Row> */}
                             </Col>
                         </Row>
-                    </Container>
                 </Card.Body>
             </Card>
 

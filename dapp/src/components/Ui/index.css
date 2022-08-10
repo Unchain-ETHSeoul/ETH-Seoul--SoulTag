@@ -1,4 +1,29 @@
 .App {
     text-align: center;
-    background-color: #171A38;
+    background-color: black;
   }
+
+.a {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: large;
+}
+
+.a-1 {
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.b {
+  box-shadow: 3px 3px 5px;
+}
+
+.c {
+  color:white;
+  font-family: Arial, sans-serif;
+}
+
+.d {
+  color:black;
+  font-family:'Times New Roman', Times, serif;
+}

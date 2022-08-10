@@ -6,10 +6,10 @@ import { injected } from '../../lib/connector';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
+
 import HostPage from '../../pages/HostPage';
 import ClientPage from '../../pages/ClientPage';
 import MainPage from '../../pages/MainPage';
-
 import TestPage from '../../pages/TestPage';
 
 const Ui = () => {

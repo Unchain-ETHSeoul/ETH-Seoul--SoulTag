@@ -20,7 +20,8 @@ import './index.css'
 const Ui = () => {
     return (
         <>
-            <h1><a href='/' className='pageName'>Page</a></h1>
+            <h1><a href='/' className='pageName'>Bleem</a></h1>
+            <br/>
             <Tabs
                 defaultActiveKey="main"
                 id="uncontrolled-tab-example"

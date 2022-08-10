@@ -66,6 +66,7 @@ const Client = () => {
 
     return(
         <S.Container>
+                <br/><br/>
                 <Row xs="5">
                     <Col></Col>
                     <Col></Col>
@@ -73,7 +74,7 @@ const Client = () => {
                     <Col></Col>
                     <Col className='d'><Button className='b' size="lg" variant="secondary" href='/' onClick={ () => alert("logged out.") }>Wallet Connected</Button>{''}</Col>
                 </Row>
-                <br/><br/><br/><br/>
+                <br/><br/><br/>
                 <Button className='b' variant="secondary" size="lg" onClick={handleShow}>
                     <S.Margin className='d'>ETH</S.Margin>
                 </Button>

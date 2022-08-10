@@ -72,7 +72,7 @@ const Main = () => {
         <S.Container>
             <Card>
                 <Card.Body className='App'>
-                        <br/><br/>
+                        <br/>
                         <Row xs="3">
                             <Col><ListGroup horizontal>
                                 <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
@@ -81,7 +81,7 @@ const Main = () => {
                             <Col><Button className='b' variant='outline-warning' size='lg' onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
                             <Col><Button className='b' variant='outline-warning' size='lg'onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
                         </Row>
-                        <br/><br/><br/><br/>
+                        <br/><br/>
                         <ColoredHR></ColoredHR>
                         {/* SBT */}
                         <Row>

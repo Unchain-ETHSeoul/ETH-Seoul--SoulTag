@@ -29,6 +29,8 @@ const Host = () => {
     const handleeventClose = () => seteventShow(false);
     const handleeventShow = () => seteventShow(true);
 
+    const [fileImg, setFileImg] = useState(null);
+
     //const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [property, setProperty] = useState([]);
     const [propsname, setPropsname] = useState(false);

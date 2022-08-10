@@ -10,6 +10,8 @@ import HostPage from '../../pages/HostPage';
 import ClientPage from '../../pages/ClientPage';
 import MainPage from '../../pages/MainPage';
 
+import TestPage from '../../pages/TestPage';
+
 const Ui = () => {
     return (
         <Tabs
@@ -25,6 +27,9 @@ const Ui = () => {
             </Tab>
             <Tab eventKey="client" title="Client">
                 <ClientPage></ClientPage>
+            </Tab>
+            <Tab eventKey="text" title="Test">
+                <TestPage></TestPage>
             </Tab>
         </Tabs>
     )

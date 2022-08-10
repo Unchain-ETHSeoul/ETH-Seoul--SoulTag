@@ -18,8 +18,8 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/host" element={<HostPage />} />
           <Route path="/partici" element={<PartiPage />} />
-          {/* <Route path="/client" element={<ClientPage />} /> */}
           <Route path="/wallet" element={<WalletPage />} />
+          {/* <Route path="/client" element={<ClientPage />} /> */}
           {/* <Route path="/test" element={<TestPage />} /> */}
         </Routes>
       </BrowserRouter>

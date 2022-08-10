@@ -7,16 +7,16 @@ import Modal from 'react-bootstrap/Modal';
 //import Dropdown from 'react-bootstrap/Dropdown';
 //import DropdownButton from 'react-bootstrap/DropdownButton';
 //import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import InputGroup from 'react-bootstrap/InputGroup';
-import SplitButton from 'react-bootstrap/SplitButton';
-import Spinner from 'react-bootstrap/Spinner';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import InputGroup from 'react-bootstrap/InputGroup';
+// import SplitButton from 'react-bootstrap/SplitButton';
+// import Spinner from 'react-bootstrap/Spinner';
 
 import { IpfsImage } from 'react-ipfs-image';
 import axios from 'axios';
@@ -36,12 +36,12 @@ const Host = () => {
     const handleeventClose = () => seteventShow(false);
     const handleeventShow = () => seteventShow(true);
 
-    const [fileImg, setFileImg] = useState(null);
+    // const [fileImg, setFileImg] = useState(null);
 
     //const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [property, setProperty] = useState([]);
-    const [propsname, setPropsname] = useState(false);
-    const [propstype, setPropstype] = useState(false);
+    // const [propsname, setPropsname] = useState(false);
+    // const [propstype, setPropstype] = useState(false);
 
     const [script, setScript] = useState("");
 
@@ -318,9 +318,6 @@ const Host = () => {
 
                 setImgsrc(ImgHash);
 
-                //src = "ipfs://";
-                //src.append(ImgHash);
-                //Take a look at your Pinata Pinned section, you will see a new file added to you list. 
                 let oneEV = {
                     title: eventname,
                     script: script,

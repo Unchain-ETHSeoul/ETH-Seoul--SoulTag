@@ -12,6 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Nav from 'react-bootstrap/Nav';
 
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -122,8 +123,8 @@ const Main = () => {
                                             </ListGroup>
                                         </Stack>
                                     </Row> */}
-                            </Col>
-                        </Row>
+                        </Col>
+                    </Row>
                 </Card.Body>
             </Card>
 
@@ -193,7 +194,7 @@ const Main = () => {
                     <Button onClick={() => printMsg("To be implemented...")}>Mint</Button>
                 </Modal.Body>
             </Modal> */}
-      </S.Container>
+        </S.Container>
     )
 }
 export default Main;

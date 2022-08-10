@@ -7,12 +7,19 @@ import Modal from 'react-bootstrap/Modal';
 //import Dropdown from 'react-bootstrap/Dropdown';
 //import DropdownButton from 'react-bootstrap/DropdownButton';
 //import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import InputGroup from 'react-bootstrap/InputGroup';
+// import SplitButton from 'react-bootstrap/SplitButton';
+// import Spinner from 'react-bootstrap/Spinner';
+
+import { IpfsImage } from 'react-ipfs-image';
+import axios from 'axios';
 /*
 
 
@@ -29,19 +36,31 @@ const Host = () => {
     const handleeventClose = () => seteventShow(false);
     const handleeventShow = () => seteventShow(true);
 
-    const [fileImg, setFileImg] = useState(null);
+    // const [fileImg, setFileImg] = useState(null);
 
     //const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [property, setProperty] = useState([]);
-    const [propsname, setPropsname] = useState(false);
-    const [propstype, setPropstype] = useState(false);
+    // const [propsname, setPropsname] = useState(false);
+    // const [propstype, setPropstype] = useState(false);
+
+    const [script, setScript] = useState("");
 
     const [eventname, setEventname] = useState("");
     const [events, setEvents] = useState([]);
 
     const [nowevent, setNowevent] = useState([]);
 
+    const [logophoto, setlogoPhoto] = useState(null);
+    const [logohash, setLogoHash] = useState("");
+    const [logofileName, setLogofileName] = useState("");
+
+    const [prizephoto, setprizePhoto] = useState(null);
+
     const [cnt, setCnt] = useState(0);
+
+    //const [fileImg, setFileImg] = useState(null);
+    const [imgsrc, setImgsrc] = useState("");
+    const [ihash, setIhash] = useState("");
 
     //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
 
@@ -68,18 +87,15 @@ const Host = () => {
                 proptype: "no"
             }
         }])
+        setScript("");
+        setlogoPhoto();
         setCnt(cnt + 1);
     }, [])
 
     function hostEvent() {
-        setEvents([...events, {
-            title: eventname,
-            props: property
-        }]); // add event
+        sendImageToIPFSPinata();
         console.log(events);
         hostClose();
-        const jsonContent = JSON.stringify(events);
-        console.log(jsonContent);
     }
 
     function hostClose() {
@@ -95,6 +111,8 @@ const Host = () => {
         }]);
         setCnt(0 + 1);
         setEventname("");
+        setlogoPhoto();
+        setScript("");
     }
 
     function addProp() {
@@ -171,8 +189,8 @@ const Host = () => {
         return (
             <>
                 {events.map((item, index) => (
-                    <>
-                        <Button variant="outline-secondary" size="md" key={index} onClick={e => {
+                    <div key={index}>
+                        <Button variant="outline-secondary" size="md" onClick={e => {
                             console.log(item);
                             console.log(item.props);
                             setNowevent(item.props);
@@ -186,19 +204,23 @@ const Host = () => {
 
                         <Modal show={eventshow} onHide={handleeventClose}>
                             <Modal.Header closeButton gap={3}>
-                                <Modal.Title><S.ColGap>Event {nowevent.title == "" ? null : nowevent.title}</S.ColGap></Modal.Title>
+                                <Modal.Title><S.ColGap>{item.title}</S.ColGap></Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
+                                {item.script}
+                            </Modal.Body>
+                            <Modal.Body>
                                 {item.props.map((it, idx) => (
-                                    <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
+                                    <h5 key={idx}>{it.props.propname}, {it.props.proptype}</h5>
                                 ))}
                                 {/* {nowevfunc} */}
                             </Modal.Body>
                             <Modal.Footer>
-
+                            <IpfsImage hash={item.logohash} gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage>
+        
                             </Modal.Footer>
                         </Modal>
-                    </>
+                    </div>
                 ))}
             </>
         )
@@ -219,19 +241,104 @@ const Host = () => {
         if (eventname == "") {
             return true;
         }
+
+        if (logophoto == null) {
+            return true;
+        }
+
+        if (script == "") {
+            return true;
+        }
+
         return false;
     }
 
-    function noweventprint(item) {
-        console.log(item);
+    // function noweventprint(item) {
+    //     console.log(item);
+    // }
+
+    // function nowevfunc() {
+    //     return (
+    //         nowev.map((it, idx) => (
+    //             <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
+    //         ))
+    //     )
+    // }
+
+    const sendEVENTJSONToIPFSPinata = async (EV) => {
+        try {
+
+            const res = await axios({
+                method: "post",
+                url: "https://api.pinata.cloud/pinning/pinJsonToIPFS",
+                data: EV,
+                headers: {
+                    'pinata_api_key': `${process.env.REACT_APP_PINATA_API_KEY}`,
+                    'pinata_secret_api_key': `${process.env.REACT_APP_PINATA_API_SECRET}`,
+                },
+            });
+
+            console.log("ipfs URI ", `ipfs://${res.data.IpfsHash}`)
+            const tokenURI = `ipfs://${res.data.IpfsHash}`;
+            console.log("Token URI", tokenURI);
+            //mintNFT(tokenURI, currentAccount)   // pass the winner
+
+        } catch (error) {
+            console.log("ERROR: ")
+            console.log(error);
+        }
     }
 
-    function nowevfunc() {
-        return (
-            nowev.map((it, idx) => (
-                <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
-            ))
-        )
+
+    const sendImageToIPFSPinata = async (e) => {
+        if (logophoto) {
+            try {
+
+                const formData = new FormData();
+                formData.append("file", logophoto);
+                console.log(formData);
+                console.log(logophoto);
+                const res = await axios({
+                    method: "post",
+                    url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+                    data: formData,
+                    headers: {
+                        'pinata_api_key': `${process.env.REACT_APP_PINATA_API_KEY}`,
+                        'pinata_secret_api_key': `${process.env.REACT_APP_PINATA_API_SECRET}`,
+                        "Content-Type": "multipart/form-data"
+                    },
+                });
+
+                //console.log(resFile);
+                setIhash(res.data.IpfsHash);
+                const RealHash = res.data.IpfsHash;
+                setLogoHash(RealHash);
+                const ImgHash = `ipfs://${res.data.IpfsHash}`;
+                console.log(ImgHash);
+
+                setImgsrc(ImgHash);
+
+                let oneEV = {
+                    title: eventname,
+                    script: script,
+                    logohash: RealHash,
+                    props: property
+                }
+                console.log(oneEV);
+                setEvents([...events, oneEV]); // add event  
+                const jsonContent = JSON.stringify(oneEV);
+                console.log(jsonContent);
+                console.log("EVENT");
+                console.log(events);
+                sendEVENTJSONToIPFSPinata(jsonContent);
+                return true;
+
+            } catch (error) {
+                console.log("Error sending File to IPFS: ")
+                console.log(error)
+                return false;
+            }
+        }
     }
 
     return (
@@ -258,7 +365,41 @@ const Host = () => {
                         />
                     </Form>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body gap={3}>
+                    <Form>
+                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Script</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={2}
+                                onChange={e => {
+                                    //console.log("e.target.value: "+ e.target.value + ", "+index);
+                                    //setType(e.target.value);
+                                    //eventname = e.target.value;
+                                    //console.log(e.target.value.length);
+                                    setScript(e.target.value);
+                                }}
+                            />
+                        </Form.Group>
+                    </Form>
+                    <Form>
+                        <Form.Group controlId="formFilelogo" className="mb-1">
+                            <Form.Label>Logo Image</Form.Label>
+                            <Form.Control
+                                type="file"
+                                //label={logofileName}
+                                onChange={(e) => {
+                                    setlogoPhoto(e.target.files[0]);
+                                }}
+                            />
+                        </Form.Group>
+                    </Form>
+                    <Form>
+                        <Form.Group controlId="formFileprize" className="mb-3">
+                            <Form.Label>Prize Image</Form.Label>
+                            <Form.Control type="file" />
+                        </Form.Group>
+                    </Form>
                     <Form>
 
                         {drawprops()}
@@ -279,8 +420,6 @@ const Host = () => {
             </Modal>
 
             {draweventbtn()}
-
-
 
             {/* One Event modal needed */}
         </S.Container>

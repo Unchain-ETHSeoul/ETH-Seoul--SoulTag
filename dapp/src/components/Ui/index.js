@@ -13,8 +13,6 @@ import ClientPage from '../../pages/ClientPage';
 import MainPage from '../../pages/MainPage';
 import TestPage from '../../pages/TestPage';
 
-
-
 import './index.css'
 
 const Ui = () => {

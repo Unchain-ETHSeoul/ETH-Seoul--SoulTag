@@ -25,6 +25,20 @@
   font-family:'Times New Roman', Times, serif;
 }
 
+.nav-tabs .nav-link {
+  background-color: transparent;
+  color: #aa00dd !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  
+}
+
+.nav-tabs .nav-link.active {
+  background-color: cadetblue;
+  border-bottom: solid 4px white !important; 
+}
+
 .pageName {
   color: white;
   font-family:'Noto Serif', serif;

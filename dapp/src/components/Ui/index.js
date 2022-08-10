@@ -19,24 +19,21 @@ const Ui = () => {
     return (
         <>
             <h1><a href='/' className='pageName'>Bleem</a></h1>
-            <br/>
+            <br />
             <Tabs
                 defaultActiveKey="main"
                 id="uncontrolled-tab-example"
                 fill
                 className='pageColor'
             >
-                <Tab eventKey="main" title="Main">
-                    <MainPage></MainPage>
-                </Tab>
                 <Tab eventKey="host" title="Host">
                     <HostPage></HostPage>
                 </Tab>
+                <Tab eventKey="test" title="test">
+                    <TestPage></TestPage>
+                </Tab>
                 <Tab eventKey="client" title="Client">
                     <ClientPage></ClientPage>
-                </Tab>
-                <Tab eventKey="text" title="Test">
-                    <TestPage></TestPage>
                 </Tab>
             </Tabs>
         </>

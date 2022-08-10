@@ -12,6 +12,7 @@ import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 
 import './index.css';
+import Ui from '../Ui';
 
 
 
@@ -66,6 +67,7 @@ const Client = () => {
 
     return(
         <S.Container>
+            <Ui/>
                 <br/><br/>
                 <Row xs="5">
                     <Col></Col>

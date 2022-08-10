@@ -20,6 +20,7 @@ import Row from 'react-bootstrap/Row';
 
 import { IpfsImage } from 'react-ipfs-image';
 import axios from 'axios';
+import Ui from '../Ui';
 /*
 
 
@@ -343,6 +344,7 @@ const Host = () => {
 
     return (
         <S.Container className='d-grid gap-2'>
+            <Ui/>
             <Button variant="primary" size="lg" onClick={handleShow}>
                 <S.Margin>HOST</S.Margin>
             </Button>

@@ -6,7 +6,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from './pages/MainPage';
 import HostPage from './pages/HostPage';
 import ClientPage from './pages/ClientPage';
-import UiPage from './pages/UiPage';
+import WalletPage from './pages/WalletPage';
+//import UiPage from './pages/UiPage';
+import ParticiPage from './pages/Participage';
 
 import TestPage from './pages/TestPage';
 
@@ -23,10 +25,12 @@ function App() {
       {/* <Navbar></Navbar> */} 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UiPage />} />
-          {/* <Route path="/host" element={<HostPage />} />
-          <Route path="/client" element={<ClientPage />} />
-          <Route path="/test" element={<TestPage />} /> */}
+          <Route exact path="/" element={<MainPage />} /> {/* init */}
+          <Route exact path="/host" element={<HostPage />} /> 
+          <Route exact path="/client" element={<ClientPage />} /> {/* modal or another page */}
+          <Route exact path="/partici" element={<ParticiPage />} /> {/* init */}
+          <Route exact path="/wallet" element={<WalletPage />} /> {/* init */}
+          {/* <Route exact path="/test" element={<TestPage />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

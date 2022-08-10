@@ -13,6 +13,10 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import InputGroup from 'react-bootstrap/InputGroup';
+import SplitButton from 'react-bootstrap/SplitButton';
+
 /*
 
 
@@ -36,10 +40,17 @@ const Host = () => {
     const [propsname, setPropsname] = useState(false);
     const [propstype, setPropstype] = useState(false);
 
+    const [script, setScript] = useState("");
+
     const [eventname, setEventname] = useState("");
     const [events, setEvents] = useState([]);
 
     const [nowevent, setNowevent] = useState([]);
+
+    const [logophoto, setlogoPhoto] = useState();
+    const [logofileName, setLogofileName] = useState("");
+
+    const [prizephoto, setprizePhoto] = useState("");
 
     const [cnt, setCnt] = useState(0);
 
@@ -68,12 +79,16 @@ const Host = () => {
                 proptype: "no"
             }
         }])
+        setScript("");
+        setlogoPhoto();
         setCnt(cnt + 1);
     }, [])
 
     function hostEvent() {
         setEvents([...events, {
             title: eventname,
+            script: script,
+            logophoto: logophoto,
             props: property
         }]); // add event
         console.log(events);
@@ -95,6 +110,8 @@ const Host = () => {
         }]);
         setCnt(0 + 1);
         setEventname("");
+        setlogoPhoto();
+        setScript("");
     }
 
     function addProp() {
@@ -171,8 +188,8 @@ const Host = () => {
         return (
             <>
                 {events.map((item, index) => (
-                    <>
-                        <Button variant="outline-secondary" size="md" key={index} onClick={e => {
+                    <div key={index}>
+                        <Button variant="outline-secondary" size="md" onClick={e => {
                             console.log(item);
                             console.log(item.props);
                             setNowevent(item.props);
@@ -189,6 +206,9 @@ const Host = () => {
                                 <Modal.Title><S.ColGap>Event {nowevent.title == "" ? null : nowevent.title}</S.ColGap></Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
+                                {item.script}
+                            </Modal.Body>
+                            <Modal.Body>
                                 {item.props.map((it, idx) => (
                                     <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
                                 ))}
@@ -198,7 +218,7 @@ const Host = () => {
 
                             </Modal.Footer>
                         </Modal>
-                    </>
+                    </div>
                 ))}
             </>
         )
@@ -219,20 +239,29 @@ const Host = () => {
         if (eventname == "") {
             return true;
         }
+
+        if (logophoto == null) {
+            return true;
+        }
+
+        if (script == ""){
+            return true;
+        }
+
         return false;
     }
 
-    function noweventprint(item) {
-        console.log(item);
-    }
+    // function noweventprint(item) {
+    //     console.log(item);
+    // }
 
-    function nowevfunc() {
-        return (
-            nowev.map((it, idx) => (
-                <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
-            ))
-        )
-    }
+    // function nowevfunc() {
+    //     return (
+    //         nowev.map((it, idx) => (
+    //             <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
+    //         ))
+    //     )
+    // }
 
     return (
         <S.Container className='d-grid gap-2'>
@@ -258,7 +287,41 @@ const Host = () => {
                         />
                     </Form>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body gap={3}>
+                    <Form>
+                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Script</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={2}
+                                onChange={e => {
+                                    //console.log("e.target.value: "+ e.target.value + ", "+index);
+                                    //setType(e.target.value);
+                                    //eventname = e.target.value;
+                                    //console.log(e.target.value.length);
+                                    setScript(e.target.value);
+                                }}
+                            />
+                        </Form.Group>
+                    </Form>
+                    <Form>
+                        <Form.Group controlId="formFilelogo" className="mb-1">
+                            <Form.Label>Logo Image</Form.Label>
+                            <Form.Control
+                                type="file"
+                                //label={logofileName}
+                                onChange={(e) => {
+                                    setlogoPhoto(e.target.files[0]);
+                                }}
+                            />
+                        </Form.Group>
+                    </Form>
+                    <Form>
+                        <Form.Group controlId="formFileprize" className="mb-3">
+                            <Form.Label>Prize Image</Form.Label>
+                            <Form.Control type="file" />
+                        </Form.Group>
+                    </Form>
                     <Form>
 
                         {drawprops()}
@@ -279,8 +342,6 @@ const Host = () => {
             </Modal>
 
             {draweventbtn()}
-
-
 
             {/* One Event modal needed */}
         </S.Container>

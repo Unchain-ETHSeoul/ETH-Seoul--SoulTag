@@ -24,6 +24,8 @@ import ColoredHR from '../Elements/ColoredHR';
 import HostPage from '../../pages/HostPage';
 import ClientPage from '../../pages/ClientPage';
 
+import './index.css';
+
 const Main = () => {
 
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
@@ -68,29 +70,29 @@ const Main = () => {
 
     return (
         <S.Container>
+            <h1 className='writingColor'>Main Page Prototype</h1>
             <Card>
-                <div>Main Page Prototype</div>
-                <Container>
-                    <Row xs="5">
-                        <Col><ListGroup horizontal>
-                            <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
-                            <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
-                        </ListGroup></Col>
-                        <Col></Col>
-                        <Col><Button onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
-                        <Col></Col>
-                        <Col><Button onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
-                    </Row>
+                <Card.Body className='App'>
+                    <Container>
+                        <Row xs="5">
+                            <Col><ListGroup horizontal>
+                                <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
+                                <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
+                            </ListGroup></Col>
+                            <Col></Col>
+                            <Col><Button onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
+                            <Col></Col>
+                            <Col><Button onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
+                        </Row>
 
-                    <ColoredHR></ColoredHR>
+                        <ColoredHR></ColoredHR>
 
-                    <Row>
-                        <Col>
-                            <Card.Body>
+                        <Row>
+                            <Col>
                                 <Row>
-                                    <Col><Card.Title>My SBT</Card.Title></Col><Col></Col><Col></Col>
+                                    <Col><Card.Title className='writingColor' align='left'>My SBT</Card.Title></Col><Col></Col><Col></Col>
                                 </Row>
-                                <Row>This part can be added dynamically, later.
+                                <Row><p className='writingColor' align='left'>This part can be added dynamically, later.</p>
                                     <Stack gap={3}>
                                         <ListGroup horizontal >
                                             <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
@@ -114,25 +116,23 @@ const Main = () => {
                                         </ListGroup>
                                     </Stack>
                                 </Row>
-
                                 <ColoredHR></ColoredHR>
-
-                                <Row>
-                                    <Col><Card.Title>My STT</Card.Title></Col><Col></Col><Col></Col>
-                                </Row>
-                                <Row>This part also can be added dynamically, later.
-                                    <Stack gap={3}>
-                                        <ListGroup horizontal='md'>
-                                            <ListGroup.Item><S.SBT1>MYSTT1</S.SBT1></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                            <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
-                                        </ListGroup>
-                                    </Stack>
-                                </Row>
-                            </Card.Body>
-                        </Col>
-                    </Row>
-                </Container>
+                                    {/* <Row>
+                                        <Col><Card.Title>My STT</Card.Title></Col><Col></Col><Col></Col>
+                                    </Row>
+                                    <Row>This part also can be added dynamically, later.
+                                        <Stack gap={3}>
+                                            <ListGroup horizontal='md'>
+                                                <ListGroup.Item><S.SBT1>MYSTT1</S.SBT1></ListGroup.Item>
+                                                <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
+                                                <ListGroup.Item><S.SBT4><Button variant="outline-primary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
+                                            </ListGroup>
+                                        </Stack>
+                                    </Row> */}
+                            </Col>
+                        </Row>
+                    </Container>
+                </Card.Body>
             </Card>
 
             {/* SBT or STT Modal */}
@@ -149,7 +149,7 @@ const Main = () => {
             </Modal>
 
             {/* Mint STT Modal */}
-            <Modal show={show_Mintmodal} fullscreen={fullscreen_Mintmodal} onHide={() => setShow_Mintmodal(false)}>
+            {/* <Modal show={show_Mintmodal} fullscreen={fullscreen_Mintmodal} onHide={() => setShow_Mintmodal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Mint some STT Modal</Modal.Title>
                 </Modal.Header>
@@ -200,9 +200,8 @@ const Main = () => {
                     />
                     <Button onClick={() => printMsg("To be implemented...")}>Mint</Button>
                 </Modal.Body>
-            </Modal>
-
-        </S.Container>
+            </Modal> */}
+      </S.Container>
     )
 }
 export default Main;

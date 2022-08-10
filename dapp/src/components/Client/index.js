@@ -8,6 +8,11 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
 
+import { useWeb3React } from '@web3-react/core';
+import { ethers } from 'ethers';
+
+
+
 
 /*
 
@@ -33,6 +38,14 @@ Gogogo
 
 const Client = () => {
 
+    // const { active } = useWeb3React();
+    // const connectingWallet = () => {
+    //     if (active) {
+    //         const { ethereum } = window;
+    //         return;
+    //     }
+    // }
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -44,6 +57,12 @@ const Client = () => {
         console.log(isSwitchOn);
     };
 
+    // const logInError = () => {
+    //     if(handdleConnect()) {
+    //         alert("Log in!")
+    //     }
+    // }
+
     return(
         <S.Container>
                 <Row xs="5">
@@ -51,10 +70,10 @@ const Client = () => {
                     <Col></Col>
                     <Col></Col>
                     <Col></Col>
-                    <Col><Button size="lg" variant="primary" href="/" onClick={() => { alert("logged out.") }}>Wallet Connected</Button>{''}</Col>
+                    <Col><Button size="lg" variant="primary" href='/' onClick={ () => alert("logged out.") }>Wallet Connected</Button>{''}</Col>
                 </Row>
-            
-                <Button variant="outline-secondary" size="lg" onClick={handleShow}>
+                <br/><br/><br/><br/>
+                <Button variant="primary" size="lg" onClick={handleShow}>
                     <S.Margin>ETH</S.Margin>
                 </Button>
                 

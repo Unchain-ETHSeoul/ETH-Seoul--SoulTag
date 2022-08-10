@@ -20,7 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';;
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
      
       <BrowserRouter>
         <Routes>

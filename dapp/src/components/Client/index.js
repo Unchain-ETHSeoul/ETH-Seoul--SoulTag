@@ -70,11 +70,11 @@ const Client = () => {
                     <Col></Col>
                     <Col></Col>
                     <Col></Col>
-                    <Col><Button size="lg" variant="primary" href='/' onClick={ () => alert("logged out.") }>Wallet Connected</Button>{''}</Col>
+                    <Col className='d'><Button className='b' size="lg" variant="secondary" href='/' onClick={ () => alert("logged out.") }>Wallet Connected</Button>{''}</Col>
                 </Row>
                 <br/><br/><br/><br/>
-                <Button variant="primary" size="lg" onClick={handleShow}>
-                    <S.Margin>ETH</S.Margin>
+                <Button className='b' variant="secondary" size="lg" onClick={handleShow}>
+                    <S.Margin className='d'>ETH</S.Margin>
                 </Button>
                 
             <Modal show={show} onHide={handleClose}>

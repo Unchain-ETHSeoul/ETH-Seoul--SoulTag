@@ -21,7 +21,7 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Badge from 'react-bootstrap/Badge';
 
-import ColoredHR from '../Elements/ConewloredHR';
+// import ColoredHR from '../Elements/ConewloredHR';
 import HostPage from '../../pages/HostPage';
 // import ClientPage from '../../pages/ClientPage';
 

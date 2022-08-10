@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/esm/Col';
 import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 
+import './index.css';
 
 
 

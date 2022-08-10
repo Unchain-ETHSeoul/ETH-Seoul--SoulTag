@@ -7,16 +7,19 @@ import Modal from 'react-bootstrap/Modal';
 //import Dropdown from 'react-bootstrap/Dropdown';
 //import DropdownButton from 'react-bootstrap/DropdownButton';
 //import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import InputGroup from 'react-bootstrap/InputGroup';
-import SplitButton from 'react-bootstrap/SplitButton';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import InputGroup from 'react-bootstrap/InputGroup';
+// import SplitButton from 'react-bootstrap/SplitButton';
+// import Spinner from 'react-bootstrap/Spinner';
 
+import { IpfsImage } from 'react-ipfs-image';
+import axios from 'axios';
 /*
 
 
@@ -33,12 +36,12 @@ const Host = () => {
     const handleeventClose = () => seteventShow(false);
     const handleeventShow = () => seteventShow(true);
 
-    const [fileImg, setFileImg] = useState(null);
+    // const [fileImg, setFileImg] = useState(null);
 
     //const [isSwitchOn, setIsSwitchOn] = useState(false);
     const [property, setProperty] = useState([]);
-    const [propsname, setPropsname] = useState(false);
-    const [propstype, setPropstype] = useState(false);
+    // const [propsname, setPropsname] = useState(false);
+    // const [propstype, setPropstype] = useState(false);
 
     const [script, setScript] = useState("");
 
@@ -47,12 +50,17 @@ const Host = () => {
 
     const [nowevent, setNowevent] = useState([]);
 
-    const [logophoto, setlogoPhoto] = useState();
+    const [logophoto, setlogoPhoto] = useState(null);
+    const [logohash, setLogoHash] = useState("");
     const [logofileName, setLogofileName] = useState("");
 
-    const [prizephoto, setprizePhoto] = useState("");
+    const [prizephoto, setprizePhoto] = useState(null);
 
     const [cnt, setCnt] = useState(0);
+
+    //const [fileImg, setFileImg] = useState(null);
+    const [imgsrc, setImgsrc] = useState("");
+    const [ihash, setIhash] = useState("");
 
     //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
 
@@ -85,16 +93,9 @@ const Host = () => {
     }, [])
 
     function hostEvent() {
-        setEvents([...events, {
-            title: eventname,
-            script: script,
-            logophoto: logophoto,
-            props: property
-        }]); // add event
+        sendImageToIPFSPinata();
         console.log(events);
         hostClose();
-        const jsonContent = JSON.stringify(events);
-        console.log(jsonContent);
     }
 
     function hostClose() {
@@ -203,19 +204,20 @@ const Host = () => {
 
                         <Modal show={eventshow} onHide={handleeventClose}>
                             <Modal.Header closeButton gap={3}>
-                                <Modal.Title><S.ColGap>Event {nowevent.title == "" ? null : nowevent.title}</S.ColGap></Modal.Title>
+                                <Modal.Title><S.ColGap>{item.title}</S.ColGap></Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 {item.script}
                             </Modal.Body>
                             <Modal.Body>
                                 {item.props.map((it, idx) => (
-                                    <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
+                                    <h5 key={idx}>{it.props.propname}, {it.props.proptype}</h5>
                                 ))}
                                 {/* {nowevfunc} */}
                             </Modal.Body>
                             <Modal.Footer>
-
+                            <IpfsImage hash={item.logohash} gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage>
+        
                             </Modal.Footer>
                         </Modal>
                     </div>
@@ -244,7 +246,7 @@ const Host = () => {
             return true;
         }
 
-        if (script == ""){
+        if (script == "") {
             return true;
         }
 
@@ -262,6 +264,82 @@ const Host = () => {
     //         ))
     //     )
     // }
+
+    const sendEVENTJSONToIPFSPinata = async (EV) => {
+        try {
+
+            const res = await axios({
+                method: "post",
+                url: "https://api.pinata.cloud/pinning/pinJsonToIPFS",
+                data: EV,
+                headers: {
+                    'pinata_api_key': `${process.env.REACT_APP_PINATA_API_KEY}`,
+                    'pinata_secret_api_key': `${process.env.REACT_APP_PINATA_API_SECRET}`,
+                },
+            });
+
+            console.log("ipfs URI ", `ipfs://${res.data.IpfsHash}`)
+            const tokenURI = `ipfs://${res.data.IpfsHash}`;
+            console.log("Token URI", tokenURI);
+            //mintNFT(tokenURI, currentAccount)   // pass the winner
+
+        } catch (error) {
+            console.log("ERROR: ")
+            console.log(error);
+        }
+    }
+
+
+    const sendImageToIPFSPinata = async (e) => {
+        if (logophoto) {
+            try {
+
+                const formData = new FormData();
+                formData.append("file", logophoto);
+                console.log(formData);
+                console.log(logophoto);
+                const res = await axios({
+                    method: "post",
+                    url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+                    data: formData,
+                    headers: {
+                        'pinata_api_key': `${process.env.REACT_APP_PINATA_API_KEY}`,
+                        'pinata_secret_api_key': `${process.env.REACT_APP_PINATA_API_SECRET}`,
+                        "Content-Type": "multipart/form-data"
+                    },
+                });
+
+                //console.log(resFile);
+                setIhash(res.data.IpfsHash);
+                const RealHash = res.data.IpfsHash;
+                setLogoHash(RealHash);
+                const ImgHash = `ipfs://${res.data.IpfsHash}`;
+                console.log(ImgHash);
+
+                setImgsrc(ImgHash);
+
+                let oneEV = {
+                    title: eventname,
+                    script: script,
+                    logohash: RealHash,
+                    props: property
+                }
+                console.log(oneEV);
+                setEvents([...events, oneEV]); // add event  
+                const jsonContent = JSON.stringify(oneEV);
+                console.log(jsonContent);
+                console.log("EVENT");
+                console.log(events);
+                sendEVENTJSONToIPFSPinata(jsonContent);
+                return true;
+
+            } catch (error) {
+                console.log("Error sending File to IPFS: ")
+                console.log(error)
+                return false;
+            }
+        }
+    }
 
     return (
         <S.Container className='d-grid gap-2'>

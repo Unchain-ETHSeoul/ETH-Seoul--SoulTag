@@ -188,7 +188,7 @@ const Host = () => {
                             </Modal.Header>
                             <Modal.Body>
                                 {item.props.map((it, idx) => (
-                                    <h4>{it.props.propname}, {it.props.proptype}</h4>
+                                    <h4 key={idx}>{it.props.propname}, {it.props.proptype}</h4>
                                 ))}
                                 {/* {nowevfunc} */}
                             </Modal.Body>

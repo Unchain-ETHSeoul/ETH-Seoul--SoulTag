@@ -46,15 +46,7 @@ import Badge from 'react-bootstrap/Badge';
 import HostPage from '../../pages/HostPage';
 // import ClientPage from '../../pages/ClientPage';
 
-const Main = () => {
-
-    const [moadlInfoshow, setModalInfoShow] = useState(false);
-    const handleinfoClose = () => setModalInfoShow(false);
-    const handleinfoShow = () => setModalInfoShow(true);
-
-    const [moadlRegishow, setModalRegiShow] = useState(false);
-    const handleregiClose = () => setModalRegiShow(false);
-    const handleregiShow = () => setModalRegiShow(true);
+const Partici = () => {
 
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
     const handdleConnect = () => {
@@ -72,7 +64,7 @@ const Main = () => {
 
     return (
         <S.Container>
-            <h1><a href='/' className='pageName'>Bleem</a></h1>
+            <h1><a href='/' className='pageName'>Participants</a></h1>
             <Container>
                 <Row>
                     <Col sm>
@@ -105,76 +97,8 @@ const Main = () => {
             {/* -- Ui Menu -- */}
 
             {/* -- Main Menu -- */}
-            <Container>
-                <Row>
-                    <Col sm><S.EventUI onClick={handleinfoShow}><IpfsImage hash='QmTU6iFCg2KkF5BvSpw446BAP9o7EqtbFsdoRhUVnbQH2D' gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage></S.EventUI></Col>
-                    <Col sm><S.EventUI>asdf</S.EventUI></Col>
-                    <Col sm><S.EventUI>asdf</S.EventUI></Col>
-                    <Col sm>{/* Add event dynamically */}</Col>
-                </Row>
-            </Container>
-
-            {/* Event info modal  == >  Event register modal */}
-            <Modal show={moadlInfoshow} onHide={handleinfoClose}>
-                <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Event Info</S.ColGap></Modal.Title>
-                    <Form>
-
-                    </Form>
-                </Modal.Header>
-                <Modal.Body gap={3}>
-                    <Form>
-                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Script</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-                    <Form>
-                        <Form.Group controlId="formFilelogo" className="mb-1">
-                            <Form.Label>Logo Image</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleregiShow}>
-                        Register
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-
-            {/* Event info modal  == >  Event register modal  == >  Submit */}
-            <Modal show={moadlRegishow} onHide={handleregiClose}>
-                <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Event Regi</S.ColGap></Modal.Title>
-                    <Form>
-
-                    </Form>
-                </Modal.Header>
-                <Modal.Body gap={3}>
-                    <Form>
-                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Script</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-                    <Form>
-                        <Form.Group controlId="formFilelogo" className="mb-1">
-                            <Form.Label>Logo Image</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleregiClose}>
-                        Register
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-
+            <Container></Container>
         </S.Container>
     )
 }
-export default Main;
+export default Partici;

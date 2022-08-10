@@ -1,40 +1,68 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+// import Ui from '../Ui/Ui';
 
 import * as S from './style';
 
+import { useWeb3React } from '@web3-react/core';
+import { injected } from '../../lib/connector';
+
+import axios from 'axios';
+import { IpfsImage } from 'react-ipfs-image';
+// import './index.css';
+
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 import Modal from 'react-bootstrap/Modal';
-//import Dropdown from 'react-bootstrap/Dropdown';
-//import DropdownButton from 'react-bootstrap/DropdownButton';
-//import ButtonGroup from 'react-bootstrap/ButtonGroup';
-// import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
+
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import InputGroup from 'react-bootstrap/InputGroup';
-// import SplitButton from 'react-bootstrap/SplitButton';
-// import Spinner from 'react-bootstrap/Spinner';
+import './index.css'
+import ColoredHR from '../Elements/ColoredHR';
 
-import { IpfsImage } from 'react-ipfs-image';
-import axios from 'axios';
-/*
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
 
+// import Tab from 'react-bootstrap/Tab';
+// import Tabs from 'react-bootstrap/Tabs';
+import Nav from 'react-bootstrap/Nav';
 
+// import Form from 'react-bootstrap/Form';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
+import Badge from 'react-bootstrap/Badge';
 
-*/
+// import ColoredHR from '../Elements/ColoredHR';
+import HostPage from '../../pages/HostPage';
+// import ClientPage from '../../pages/ClientPage';
+
+// import Button from 'react-bootstrap/Button';
+// import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 
 const Host = () => {
+    const [moadlMakeshow, setModalMakeShow] = useState(false);
+    const handleregiClose = () => setModalMakeShow(false);
+    const handleregiShow = () => setModalMakeShow(true);
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [eventshow, seteventShow] = useState(false);
-    const handleeventClose = () => seteventShow(false);
-    const handleeventShow = () => seteventShow(true);
+    const [modaleventshow, setmodaleventShow] = useState(false);
+    const handlemodaleventClose = () => setmodaleventShow(false);
+    const handlmodaleeventShow = () => setmodaleventShow(true);
 
     // const [fileImg, setFileImg] = useState(null);
 
@@ -137,6 +165,8 @@ const Host = () => {
         //setProperty([... property]);
     }
 
+
+
     useEffect(() => {
         //console.log("changed");
         drawprops();
@@ -185,51 +215,23 @@ const Host = () => {
         )
     }
 
-    function draweventbtn() {
-        return (
-            <>
-                {events.map((item, index) => (
-                    <div key={index}>
-                        <Button variant="outline-secondary" size="md" onClick={e => {
-                            console.log(item);
-                            console.log(item.props);
-                            setNowevent(item.props);
-                            nowev = item;
-                            handleeventShow();
-                            //drawevent(item);
-                        }}>
-                            <S.Margin>{item.title}</S.Margin>
-                        </Button>
-
-
-                        <Modal show={eventshow} onHide={handleeventClose}>
-                            <Modal.Header closeButton gap={3}>
-                                <Modal.Title><S.ColGap>{item.title}</S.ColGap></Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                {item.script}
-                            </Modal.Body>
-                            <Modal.Body>
-                                {item.props.map((it, idx) => (
-                                    <h5 key={idx}>{it.props.propname}, {it.props.proptype}</h5>
-                                ))}
-                                {/* {nowevfunc} */}
-                            </Modal.Body>
-                            <Modal.Footer>
-                            <IpfsImage hash={item.logohash} gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage>
-        
-                            </Modal.Footer>
-                        </Modal>
-                    </div>
-                ))}
-            </>
-        )
+    const { chainedId, account, active, activate, deactivate } = useWeb3React();
+    const handdleConnect = () => {
+        if (active) {
+            deactivate();
+            return;
+        }
+        activate(injected, (error) => {
+            if ('/No Ethereum provider was found on window.ethereum/'.test(error)) {
+                window.open('https://metamask.io/download.html');
+            }
+        });
     }
 
     function allinput() {
-        //console.log("ALLINPUT");
+        console.log("ALLINPUT");
         //console.log(eventname.length);
-        //console.log(property);
+        console.log(property);
         for (var i = 0; i < property.length; i++) {
             //console.log(property[i].props.propname+ ", "+property[i].props.proptype);
             if (property[i].props.propname == "") {
@@ -282,6 +284,9 @@ const Host = () => {
             const tokenURI = `ipfs://${res.data.IpfsHash}`;
             console.log("Token URI", tokenURI);
             //mintNFT(tokenURI, currentAccount)   // pass the winner
+
+            const result = JSON.parse(tokenURI.toString());
+            console.log(result);
 
         } catch (error) {
             console.log("ERROR: ")
@@ -341,16 +346,172 @@ const Host = () => {
         }
     }
 
-    return (
-        <S.Container className='d-grid gap-2'>
-            <Button variant="primary" size="lg" onClick={handleShow}>
-                <S.Margin>HOST</S.Margin>
-            </Button>
+    function AddEvent() {
+        handleregiShow();
+    }
 
-            {/* properyty input modal */}
-            <Modal show={show} onHide={hostClose}>
+    function Partici() {
+        handlmodaleeventShow();
+    }
+
+    function partilist() {
+        return (
+            <S.PersonContainer>
+                <S.Person className = "mb-3">
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <Row className="mb-2">
+                                    <Col>Name : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Nickname : </Col>
+                                    <Col>Kathy</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Age : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Address : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                </S.Person>
+                <S.Person className = "mb-3">
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <Row className="mb-2">
+                                    <Col>Name : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Nickname : </Col>
+                                    <Col>Kathy</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Age : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Address : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                </S.Person>
+                <S.Person className = "mb-3">
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <Row className="mb-2">
+                                    <Col>Name : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Nickname : </Col>
+                                    <Col>Kathy</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Age : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Address : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                </S.Person>
+                <S.Person className = "mb-3">
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <Row className="mb-2">
+                                    <Col>Name : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Nickname : </Col>
+                                    <Col>Kathy</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Age : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Address : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                                <Row className="mb-2">
+                                    <Col>Address : </Col>
+                                    <Col>private</Col>
+                                </Row>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                </S.Person>
+            </S.PersonContainer>
+        )
+    }
+
+    return (
+        <S.Container>
+            <h1><a href='/' className='pageName'>Host</a></h1>
+            <Container>
+                <Row>
+                    <Col sm>
+                        <S.MainUi>
+                            <ListGroup horizontal>
+                                <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
+                                <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
+                            </ListGroup>
+                        </S.MainUi>
+                    </Col>
+                    <Col>
+                        <S.MainUi>
+                            <ButtonGroup aria-label="Basic example">
+                                <Button variant="secondary" href='/host'>host</Button>
+                                <Button variant="secondary" href='/'>Main</Button>
+                                <Button variant="secondary" href='/partici'>Participants</Button>
+                            </ButtonGroup>
+                        </S.MainUi>
+                    </Col>
+                    <Col>
+                        <S.MainUi>
+                            <Button className='b' variant='outline-warning' size='md' onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button>
+                        </S.MainUi>
+                    </Col>
+                </Row>
+            </Container>
+
+            <ColoredHR />
+            <Tabs defaultActiveKey="main" id="uncontrolled-tab-example" fill className='pageColor'></Tabs>
+            {/* -- Ui Menu -- */}
+
+            {/* -- Main Menu -- */}
+            <Container>
+                <Row>
+                    <S.EventUI>asdf</S.EventUI>
+                    <S.EventUI onClick={Partici}>asdf</S.EventUI>
+                    <S.EventUI onClick={AddEvent}> + </S.EventUI>
+                    {/* switch */}
+                </Row>
+            </Container>
+
+
+
+
+            {/* Event make modal  == >  Event add */}
+            <Modal show={moadlMakeshow} onHide={handleregiClose}>
                 <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Event</S.ColGap></Modal.Title>
+                    <Modal.Title><S.ColGap>Event: </S.ColGap></Modal.Title>
                     <Form>
                         <Form.Control
                             type="text"
@@ -383,7 +544,7 @@ const Host = () => {
                         </Form.Group>
                     </Form>
                     <Form>
-                        <Form.Group controlId="formFilelogo" className="mb-1">
+                        <Form.Group controlId="formFilelogo" className="mb-3">
                             <Form.Label>Logo Image</Form.Label>
                             <Form.Control
                                 type="file"
@@ -395,22 +556,15 @@ const Host = () => {
                         </Form.Group>
                     </Form>
                     <Form>
-                        <Form.Group controlId="formFileprize" className="mb-3">
-                            <Form.Label>Prize Image</Form.Label>
-                            <Form.Control type="file" />
-                        </Form.Group>
-                    </Form>
-                    <Form>
-
                         {drawprops()}
-
                     </Form>
+
                     <Button variant="primary" size="sm" onClick={addProp}>
                         +
                     </Button>{' '}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={hostClose}>
+                    <Button variant="secondary" onClick={handleregiClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={hostEvent} disabled={allinput()}>
@@ -419,9 +573,44 @@ const Host = () => {
                 </Modal.Footer>
             </Modal>
 
-            {draweventbtn()}
 
-            {/* One Event modal needed */}
+
+
+
+            {/* Event manage modal  == >  Event manage */}
+            <Modal show={modaleventshow} onHide={handlemodaleventClose}>
+                <Modal.Header closeButton gap={3}>
+                    <Modal.Title><S.ColGap>Participants list</S.ColGap></Modal.Title>
+                    <Form>
+
+                    </Form>
+                </Modal.Header>
+                <Modal.Body gap={3}>
+                    <Form>
+
+                    </Form>
+                    <Form>
+
+                    </Form>
+                    <Form>
+                        {/*drawprops()*/}
+                        {partilist()}
+                    </Form>
+                    {/*
+                    <Button variant="primary" size="sm" onClick={addProp}>
+                        +
+                    </Button>{' '}
+                     */}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handlemodaleventClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handlemodaleventClose}>
+                        Confirmed
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </S.Container>
     )
 }

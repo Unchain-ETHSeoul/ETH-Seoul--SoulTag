@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
 .a {
   color: white;
   font-family: Georgia, serif;
@@ -39,10 +41,27 @@
 
 .pageName {
   color: white;
+  font-family:'Noto Serif', serif;
   font-size: 3cm;
   text-decoration: none;
 }
 
 .pageColor {
   background-color: #2c2c2c;
+  color: yellow;
+}
+
+/* 마우스 올렸을 시 변화없음 */
+a:hover { 
+  color: white !important 
+}
+
+.nav-tabs .nav-link {
+  color: #CFB337 !important;
+  
+}
+
+.nav-tabs .nav-link.active {
+  background-color: cadetblue;
+  border-bottom: solid 4px white !important; 
 }

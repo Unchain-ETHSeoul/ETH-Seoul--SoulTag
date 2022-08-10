@@ -12,6 +12,14 @@ import ClientPage from '../../pages/ClientPage';
 import MainPage from '../../pages/MainPage';
 import TestPage from '../../pages/TestPage';
 
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+// import Tab from 'react-bootstrap/Tab';
+
+import * as S from './style';
+import './index.css';
+
 const Ui = () => {
     return (
         <Tabs
@@ -19,9 +27,11 @@ const Ui = () => {
             id="uncontrolled-tab-example"
             className="mb-3"
         >
+            <S.Container>            </S.Container>
             <Tab eventKey="main" title="Main">
                 <MainPage></MainPage>
             </Tab>
+
             <Tab eventKey="host" title="Host">
                 <HostPage></HostPage>
             </Tab>

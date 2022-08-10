@@ -71,7 +71,7 @@ const Main = () => {
     }
 
     return (
-        <S.Container>
+        <S.Container className='App'>
             <h1><a href='/' className='pageName'>Bleem</a></h1>
             <Container>
                 <Row>
@@ -86,8 +86,8 @@ const Main = () => {
                     <Col>
                         <S.MainUi>
                             <ButtonGroup aria-label="Basic example">
-                                <Button variant="secondary" href='/host'>host</Button>
-                                <Button variant="secondary" href='/'>Main</Button>
+                                <Button variant="secondary" href='/host'>Host</Button>
+                                <Button variant="secondary" href='/wallet'>Wallet</Button>
                                 <Button variant="secondary" href='/partici'>Participants</Button>
                             </ButtonGroup>
                         </S.MainUi>

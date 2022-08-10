@@ -90,6 +90,8 @@ const Host = () => {
     const [imgsrc, setImgsrc] = useState("");
     const [ihash, setIhash] = useState("");
 
+    const [isadded, setIsadded] = useState(false);
+
     //const [property, setProperty] = useState<PropertyInput[]>({ id: 0, title: ''});
 
     //let property_cnt = 0;
@@ -357,7 +359,7 @@ const Host = () => {
     function partilist() {
         return (
             <S.PersonContainer>
-                <S.Person className = "mb-3">
+                <S.Person className="mb-3">
                     <Card>
                         <Card.Body>
                             <Container>
@@ -381,7 +383,7 @@ const Host = () => {
                         </Card.Body>
                     </Card>
                 </S.Person>
-                <S.Person className = "mb-3">
+                <S.Person className="mb-3">
                     <Card>
                         <Card.Body>
                             <Container>
@@ -405,7 +407,7 @@ const Host = () => {
                         </Card.Body>
                     </Card>
                 </S.Person>
-                <S.Person className = "mb-3">
+                <S.Person className="mb-3">
                     <Card>
                         <Card.Body>
                             <Container>
@@ -429,7 +431,7 @@ const Host = () => {
                         </Card.Body>
                     </Card>
                 </S.Person>
-                <S.Person className = "mb-3">
+                <S.Person className="mb-3">
                     <Card>
                         <Card.Body>
                             <Container>
@@ -461,6 +463,80 @@ const Host = () => {
         )
     }
 
+    function ViewEvent() {
+    }
+
+    function newevent() {
+        return (
+            <>
+                <S.EventUI onClick={ViewEvent}>dd</S.EventUI>
+                <Modal show={moadlMakeshow} onHide={handleregiClose}>
+                    <Modal.Header closeButton gap={3}>
+                        <Modal.Title><S.ColGap>Event: </S.ColGap></Modal.Title>
+                        <Form>
+                            <Form.Control
+                                type="text"
+                                placeholder="Title"
+                                onChange={e => {
+                                    //console.log("e.target.value: "+ e.target.value + ", "+index);
+                                    //setType(e.target.value);
+                                    //eventname = e.target.value;
+                                    //console.log(e.target.value.length);
+                                    setEventname(e.target.value);
+                                }}
+                            />
+                        </Form>
+                    </Modal.Header>
+                    <Modal.Body gap={3}>
+                        <Form>
+                            <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
+                                <Form.Label>Script</Form.Label>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={2}
+                                    onChange={e => {
+                                        //console.log("e.target.value: "+ e.target.value + ", "+index);
+                                        //setType(e.target.value);
+                                        //eventname = e.target.value;
+                                        //console.log(e.target.value.length);
+                                        setScript(e.target.value);
+                                    }}
+                                />
+                            </Form.Group>
+                        </Form>
+                        <Form>
+                            <Form.Group controlId="formFilelogo" className="mb-3">
+                                <Form.Label>Logo Image</Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    //label={logofileName}
+                                    onChange={(e) => {
+                                        setlogoPhoto(e.target.files[0]);
+                                    }}
+                                />
+                            </Form.Group>
+                        </Form>
+                        <Form>
+                            {drawprops()}
+                        </Form>
+
+                        <Button variant="primary" size="sm" onClick={addProp}>
+                            +
+                        </Button>{' '}
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleregiClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={hostEvent} disabled={allinput()}>
+                            HOST!
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+        )
+    }
+
     return (
         <S.Container>
             <h1><a href='/' className='pageName'>Host</a></h1>
@@ -477,7 +553,7 @@ const Host = () => {
                     <Col>
                         <S.MainUi>
                             <ButtonGroup aria-label="Basic example">
-                                <Button variant="secondary" href='/host'>host</Button>
+                                <Button variant="secondary" href='/host'>Host</Button>
                                 <Button variant="secondary" href='/'>Main</Button>
                                 <Button variant="secondary" href='/partici'>Participants</Button>
                             </ButtonGroup>
@@ -498,8 +574,8 @@ const Host = () => {
             {/* -- Main Menu -- */}
             <Container>
                 <Row>
-                    <S.EventUI>asdf</S.EventUI>
                     <S.EventUI onClick={Partici}>asdf</S.EventUI>
+                    {isadded ? newevent() : null}
                     <S.EventUI onClick={AddEvent}> + </S.EventUI>
                     {/* switch */}
                 </Row>

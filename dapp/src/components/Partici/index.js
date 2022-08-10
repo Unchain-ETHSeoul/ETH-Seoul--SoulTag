@@ -78,7 +78,7 @@ const Partici = () => {
                     <Col>
                         <S.MainUi>
                             <ButtonGroup aria-label="Basic example">
-                                <Button variant="secondary" href='/host'>host</Button>
+                                <Button variant="secondary" href='/host'>Host</Button>
                                 <Button variant="secondary" href='/'>Main</Button>
                                 <Button variant="secondary" href='/partici'>Participants</Button>
                             </ButtonGroup>

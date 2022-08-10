@@ -73,51 +73,7 @@ const Main = () => {
         <S.Container>
             <Card>
                 <Card.Body className='App'>
-<<<<<<< HEAD
-                    <Row xs="3">
-                        <Col><ListGroup horizontal>
-                            <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
-                            <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
-                        </ListGroup></Col>
-                        <Col><Button className='b' variant='secondary' onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
-                        <Col><Button className='b' variant='secondary' onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
-                    </Row>
-                    <br /><br />
-                    <ColoredHR></ColoredHR>
-                    {/* SBT */}
-                    <Row>
-                        <Col>
-                            <Row>
-                                <Col><Card.Title className='c' align='left'>My SBT</Card.Title></Col><Col></Col><Col></Col>
-                            </Row>
-                            <Row><p className='c' align='left'>This part can be added dynamically, later.</p>
-                                <Stack gap={3}>
-                                    <ListGroup horizontal className='d'>
-                                        <ListGroup.Item><S.SBT1>FileCoindddddfasdfasdfasdf</S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Badge bg="secondary">10</Badge></S.SBT3></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
-                                    </ListGroup>
-                                    <br />
-                                    <ListGroup horizontal='sm' className='d'>
-                                        <ListGroup.Item><S.SBT1>ETH</S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah 'SM' example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Badge bg="secondary">30</Badge></S.SBT3></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => handleShow('md-down')}>View</Button></S.SBT4></ListGroup.Item>
-                                    </ListGroup>
-                                    <br />
-                                    <ListGroup horizontal='md' className='d'>
-                                        <ListGroup.Item><S.SBT1>Polygon</S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Badge bg="secondary">50</Badge></S.SBT3></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT4><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT4></ListGroup.Item>
-                                    </ListGroup>
-                                </Stack>
-                            </Row>
-                            <ColoredHR></ColoredHR>
-                            {/* <Row>
-=======
-                        <br/><br/>
+                        <br/>
                         <Row xs="3">
                             <Col><ListGroup horizontal>
                                 <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
@@ -126,7 +82,7 @@ const Main = () => {
                             <Col><Button className='b' variant='outline-warning' size='lg' onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col>
                             <Col><Button className='b' variant='outline-warning' size='lg'onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
                         </Row>
-                        <br/><br/><br/><br/>
+                        <br/><br/>
                         <ColoredHR></ColoredHR>
                         {/* SBT */}
                         <Row>
@@ -156,7 +112,6 @@ const Main = () => {
                                 </Row>
                                 <ColoredHR></ColoredHR>
                                     {/* <Row>
->>>>>>> f0bea5b851309ccc05cc90c1f37a73d20ebcf588
                                         <Col><Card.Title>My STT</Card.Title></Col><Col></Col><Col></Col>
                                     </Row>
                                     <Row>This part also can be added dynamically, later.

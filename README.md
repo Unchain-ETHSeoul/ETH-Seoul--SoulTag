@@ -27,7 +27,7 @@
  (intruduce additional package, or dependencies…)
 
 ## Files
- (introduce out KEY files…)
+ (introduce our KEY(main) files…)
 
 ## Usage
  (introduce how to execute our project…)

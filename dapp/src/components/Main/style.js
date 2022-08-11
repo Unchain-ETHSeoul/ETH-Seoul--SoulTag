@@ -6,6 +6,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: row;
     justify-content: center;
+    background-color: black;
 `
 
 export const Account1 = styled.div`
@@ -55,9 +56,11 @@ export const EventUI = styled.div`
     display: block;
     width: 250px;
     height: 300px;
-    background-color: white;
-    border: 2px yellow solid;
-    box-shadow: 5px 10px 20px red;
+    line-height: 300px;
+    vertical-align: middle;
+    background-color: #111111;
+    border: 2px #88880033 solid;
+    box-shadow: 0px 0px 10px #88660088;
     border-radius: 10px;
     margin: auto;
     margin-top: 20px;
@@ -81,5 +84,8 @@ export const Property = styled.div`
 `
 
 export const ColGap = styled.div`
+    display: block;
     margin-right: 10px;
+    line-height: 30px;
+    vertical-align: middle;
 `

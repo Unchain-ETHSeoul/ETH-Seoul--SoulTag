@@ -28,6 +28,8 @@ import ColoredHR from '../Elements/ColoredHR';
 
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+
+import Alert from 'react-bootstrap/Alert';
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
@@ -70,6 +72,41 @@ const Main = () => {
 
     }
 
+    function infotoregi() {
+        handleinfoClose();
+        handleregiShow();
+    }
+
+    function regitoinfo() {
+        handleregiClose();
+        handleinfoShow();
+    }
+
+    const [isSwitchOn, setIsSwitchOn] = useState(false);
+    const [isSwitchOn1, setIsSwitchOn1] = useState(false);
+    const [isSwitchOn2, setIsSwitchOn2] = useState(false);
+    const [isSwitchOn3, setIsSwitchOn3] = useState(false);
+    const [isSwitchOn4, setIsSwitchOn4] = useState(false);
+    const [isSwitchOn5, setIsSwitchOn5] = useState(false);
+    const [isSwitchOn6, setIsSwitchOn6] = useState(false);
+
+    const [sbm, setSbm] = useState(false);
+
+    const onSwitchAction = () => {
+        setIsSwitchOn(!isSwitchOn);
+        console.log(isSwitchOn);
+    };
+
+
+    function submitbtn() {
+        handleregiClose();
+        sbm=true;
+        //onShowAlert();
+        setTimeout(function() {
+            sbm=false;
+        }, 3000);
+    }
+
     return (
         <S.Container className='App'>
             <h1><a href='/' className='pageName'>Bleem</a></h1>
@@ -107,73 +144,111 @@ const Main = () => {
             {/* -- Main Menu -- */}
             <Container>
                 <Row>
-                    <Col sm><S.EventUI onClick={handleinfoShow}><IpfsImage hash='QmTU6iFCg2KkF5BvSpw446BAP9o7EqtbFsdoRhUVnbQH2D' gatewayUrl='https://gateway.pinata.cloud/ipfs'></IpfsImage></S.EventUI></Col>
-                    <Col sm><S.EventUI>asdf</S.EventUI></Col>
-                    <Col sm><S.EventUI>asdf</S.EventUI></Col>
-                    <Col sm>{/* Add event dynamically */}</Col>
+                    <Col sm><S.EventUI className='im'><IpfsImage hash='QmRACojSdFuqnyyfQZ9Zgiz6zrVCUX1JRkYZyvRGu1MCzG' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ width: "150px" }}></IpfsImage></S.EventUI></Col>
+                    <Col sm><S.EventUI className='im' onClick={handleinfoShow}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI></Col>
+                    <Col sm><S.EventUI className='im'><img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ width: "150px" }}></img></S.EventUI></Col>
+                    {/* <Col sm>Add event dynamically</Col> */}
                 </Row>
             </Container>
 
             {/* Event info modal  == >  Event register modal */}
             <Modal show={moadlInfoshow} onHide={handleinfoClose}>
                 <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Event Info</S.ColGap></Modal.Title>
-                    <Form>
-
-                    </Form>
+                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px", marginLeft: "20px" }}></IpfsImage></S.ColGap></Modal.Title>
                 </Modal.Header>
-                <Modal.Body gap={3}>
-                    <Form>
-                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Script</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-                    <Form>
-                        <Form.Group controlId="formFilelogo" className="mb-1">
-                            <Form.Label>Logo Image</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-
+                <Modal.Body>
+                    <Modal.Title><S.ColGap>Informations</S.ColGap></Modal.Title>
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <div>Runs from: Aug 5 - 11, 2022</div>
+                                <div>Registration starts: 20 JULY 2022</div>
+                                <div>Registration ends: 03 AUGUST 2022</div>
+                                <div>Hackathon starts: 05 AUGUST 2022</div>
+                                <div>Hackathon ends: 11 AUGUST 2022</div>
+                            </Container>
+                        </Card.Body>
+                    </Card>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleregiShow}>
+                    <Button variant="secondary" onClick={handleinfoClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={infotoregi}>
                         Register
                     </Button>
                 </Modal.Footer>
             </Modal>
 
             {/* Event info modal  == >  Event register modal  == >  Submit */}
-            <Modal show={moadlRegishow} onHide={handleregiClose}>
+            <Modal show={moadlRegishow} onHide={regitoinfo}>
                 <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Event Regi</S.ColGap></Modal.Title>
-                    <Form>
-
-                    </Form>
+                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px", marginLeft: "20px" }}></IpfsImage></S.ColGap></Modal.Title>
                 </Modal.Header>
                 <Modal.Body gap={3}>
-                    <Form>
-                        <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Script</Form.Label>
-
-                        </Form.Group>
-                    </Form>
-                    <Form>
-                        <Form.Group controlId="formFilelogo" className="mb-1">
-                            <Form.Label>Logo Image</Form.Label>
-
-                        </Form.Group>
-                    </Form>
+                    <Modal.Title>Submission information list</Modal.Title>
+                    <Row>
+                        <Col>
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Name"
+                                onChange={onSwitchAction}
+                                checked={isSwitchOn}
+                            />
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Nickname"
+                                onChange={setIsSwitchOn1}
+                                checked={isSwitchOn1}
+                            />
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Age"
+                                onChange={setIsSwitchOn2}
+                                checked={isSwitchOn2}
+                            />
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Gender"
+                                onChange={setIsSwitchOn3}
+                                checked={isSwitchOn3}
+                            />
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Address"
+                                onChange={setIsSwitchOn4}
+                                checked={isSwitchOn4}
+                            />
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Job"
+                                onChange={setIsSwitchOn5}
+                                checked={isSwitchOn5}
+                            />
+                        </Col>
+                    </Row>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleregiClose}>
-                        Register
+                    <Button variant="secondary" onClick={regitoinfo}>
+                        Back
+                    </Button>
+                    <Button variant="primary" onClick={submitbtn}>
+                        Submit
                     </Button>
                 </Modal.Footer>
-            </Modal>
 
+            </Modal>
+            <Alert key='success' variant='success' show={sbm}>
+                    asdf
+          {/* This is a {variant} alert—check it out! */}
+        </Alert>
         </S.Container>
     )
 }

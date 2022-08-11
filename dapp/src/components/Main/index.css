@@ -70,3 +70,12 @@ a:hover {
   background-color: cadetblue;
   border-bottom: solid 4px white !important; 
 }
+
+.im {
+  transition: transform .2s;
+  margin: 0 auto;
+}
+  
+.im:hover {
+  transform: scale(1.1);
+}

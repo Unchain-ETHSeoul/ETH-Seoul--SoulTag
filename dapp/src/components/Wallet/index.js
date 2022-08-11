@@ -249,7 +249,7 @@ const Wallet = () => {
                                                         // checked={isSwitchOn}
                                                     /></Col>
                                                     <Col>Name : </Col>
-                                                    <Col>{isSwitchOn ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
+                                                    <Col>{false ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
                                                 </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -260,7 +260,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn1}
                                                         /></Col>
                                                         <Col>NickName : </Col>
-                                                        <Col>{isSwitchOn1 ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
+                                                        <Col>{false ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
                                                     </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -271,7 +271,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn2}
                                                         /></Col>
                                                         <Col>Age : </Col>
-                                                        <Col>{isSwitchOn2 ? <span>25</span> : <span className='blurs'>25</span>}</Col>
+                                                        <Col>{false ? <span>25</span> : <span className='blurs'>25</span>}</Col>
                                                     </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -282,7 +282,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn3}
                                                         /></Col>
                                                         <Col>Address : </Col>
-                                                        <Col>{isSwitchOn3 ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
+                                                        <Col>{false ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
                                                     </Row></S.SBT3></ListGroup.Item>
                                                     <ListGroup.Item>
                                                         <Row>
@@ -305,7 +305,7 @@ const Wallet = () => {
                                                         // checked={isSwitchOn}
                                                     /></Col>
                                                     <Col>Name : </Col>
-                                                    <Col>{isSwitchOn ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
+                                                    <Col>{false ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
                                                 </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -316,7 +316,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn1}
                                                         /></Col>
                                                         <Col>NickName : </Col>
-                                                        <Col>{isSwitchOn1 ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
+                                                        <Col>{false ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
                                                     </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -327,7 +327,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn2}
                                                         /></Col>
                                                         <Col>Age : </Col>
-                                                        <Col>{isSwitchOn2 ? <span>25</span> : <span className='blurs'>25</span>}</Col>
+                                                        <Col>{false ? <span>25</span> : <span className='blurs'>25</span>}</Col>
                                                     </Row>
                                                     <Row>
                                                         <Col><Form.Check
@@ -338,7 +338,7 @@ const Wallet = () => {
                                                             // checked={isSwitchOn3}
                                                         /></Col>
                                                         <Col>Address : </Col>
-                                                        <Col>{isSwitchOn3 ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
+                                                        <Col>{false ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
                                                     </Row></S.SBT3></ListGroup.Item>
                                                     <ListGroup.Item>
                                                         <Row>

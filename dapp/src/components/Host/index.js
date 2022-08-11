@@ -400,11 +400,12 @@ const Host = () => {
     function newevent() {
         return (
             <>
-                <S.EventUI className='im' onClick={handlmodalethirdShow}><img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "150px" }}></img></S.EventUI>
+                <S.EventUI className='im' onClick={handlmodalethirdShow}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI>
                 <Modal show={modalthirdshow} onHide={handlemodalthirdClose}>
                     <Modal.Header closeButton gap={3}>
-                        <Modal.Title><S.ColGap>Filecoin 2022<img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "25px", marginLeft: "20px" }}></img></S.ColGap></Modal.Title>
-                    </Modal.Header>
+                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px" }}></IpfsImage></S.ColGap></Modal.Title>
+                
+                        </Modal.Header>
                     <Modal.Body>
                     <Modal.Title><S.ColGap>Informations</S.ColGap></Modal.Title>
                     <Card className="mb-3">
@@ -474,7 +475,7 @@ const Host = () => {
             {/* -- Main Menu -- */}
             <Container>
                 <Row>
-                    <S.EventUI className='im' onClick={Partici}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI>
+                    <S.EventUI className='im' onClick={Partici}><img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "150px" }}></img></S.EventUI>
                     {isadded ? newevent() : null}
                     <S.EventUI className='im' onClick={AddEvent}> + </S.EventUI>
                     {/* switch */}
@@ -552,7 +553,8 @@ const Host = () => {
             {/* Event manage modal  == >  Event manage */}
             <Modal show={modaleventshow} onHide={handlemodaleventClose}>
                 <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px", marginLeft: "20px" }}></IpfsImage></S.ColGap></Modal.Title>
+                <Modal.Title><S.ColGap>Filecoin 2022<img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "25px", marginLeft: "20px" }}></img></S.ColGap></Modal.Title>
+                    
                 </Modal.Header>
                 <Modal.Body>
                     <Modal.Title><S.ColGap>Informations</S.ColGap></Modal.Title>

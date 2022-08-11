@@ -56,3 +56,9 @@ export const SBT4 = styled.div`
     white-space: nowrap;
     overflow: hidden;
 `
+export const ColGap = styled.div`
+    display: block;
+    margin-right: 10px;
+    line-height: 30px;
+    vertical-align: middle;
+`

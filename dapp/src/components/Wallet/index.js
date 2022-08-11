@@ -23,6 +23,8 @@ import Badge from 'react-bootstrap/Badge';
 
 import ColoredHR from '../Elements/ColoredHR';
 import HostPage from '../../pages/HostPage';
+
+import { IpfsImage } from 'react-ipfs-image';
 // import ClientPage from '../../pages/ClientPage';
 
 import './index.css';
@@ -77,38 +79,49 @@ const Wallet = () => {
                 <Card.Body className='App'>
                     <br />
                     <Row xs="3">
+                        <div className='login'>
                         <Col><ListGroup horizontal>
                             <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
                             <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
                         </ListGroup></Col>
                         {/* <Col><Button className='b' variant='outline-warning' size='lg' onClick={() => handleShow_Mint('md-down')}>Mint STT</Button></Col> */}
                         <Col><Button className='b' variant='outline-warning' size='lg' onClick={handdleConnect}>{active ? "Disconnect" : "Connect"}</Button></Col>
+                        </div>
                     </Row>
                     <br /><br />
                     <ColoredHR></ColoredHR>
                     {/* SBT */}
                     <Row>
                         <Col>
+                        <div>
                             <Row>
-                                <Col><Card.Title className='c' align='left'>My SBT</Card.Title></Col><Col></Col><Col></Col>
+                                <Col><Card.Title className='c' align='middle'>My SBT</Card.Title></Col>
                             </Row>
-                            <Row><p className='c' align='left'>This part can be added dynamically, later.</p>
+                            <Row>
+                                <Col>
+                                    <p className='c' align='middle'>This part can be added dynamically, later.</p>
+                                </Col>
+                            </Row>
+                            <Row>
                                 <Stack gap={3}>
+                                    <div className='md'>
                                     <ListGroup horizontal className='c'>
-                                        <ListGroup.Item><S.SBT1><Badge bg="secondary">10</Badge></S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah no example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT2><img src='./POLYGON.png' style={{height: "100px"}}></img></S.SBT2></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT3><br></br><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
                                     </ListGroup>
+                                    </div>
+                                    <div className='md'>
                                     <ListGroup horizontal='sm' className='d'>
-                                        <ListGroup.Item><S.SBT1><Badge bg="secondary">30</Badge></S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah 'SM' example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Button className='b' variant="outline-secondary" onClick={() => handleShow('md-down')}>View</Button></S.SBT3></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT2><img src='./ETHSeoul.png' style={{height: "100px"}}></img></S.SBT2></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT3><br></br><Button className='b' variant="outline-secondary" onClick={() => handleShow('md-down')}>View</Button></S.SBT3></ListGroup.Item>
                                     </ListGroup>
+                                    </div>
+                                    <div className='md'>
                                     <ListGroup horizontal='md' className='d'>
-                                        <ListGroup.Item><S.SBT1><Badge bg="secondary">50</Badge></S.SBT1></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT2>blah blah 'MD' example</S.SBT2></ListGroup.Item>
-                                        <ListGroup.Item><S.SBT3><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT2><img src='./STARKNET.png' style={{height: "100px"}}></img></S.SBT2></ListGroup.Item>
+                                        <ListGroup.Item><S.SBT3><br></br><Button className='b' variant="outline-secondary" onClick={() => printMsg("To be implemented...")}>View</Button></S.SBT3></ListGroup.Item>
                                     </ListGroup>
+                                    </div>
                                     <br /><br /><br />
                                 </Stack>
                             </Row>
@@ -125,6 +138,7 @@ const Wallet = () => {
                                             </ListGroup>
                                         </Stack>
                                     </Row> */}
+                                    </div>
                         </Col>
                     </Row>
                 </Card.Body>
@@ -132,15 +146,43 @@ const Wallet = () => {
 
             {/* SBT or STT Modal */}
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>ETH</Modal.Title>
+            <Modal.Header closeButton gap={3}>
+                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px", marginLeft: "20px" }}></IpfsImage></S.ColGap></Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <h4>Header1</h4>
-                    <p>Modal body content</p>
-                    <h4>Header2</h4>
-                    <p>Modal body content</p>
+                <Modal.Body gap={3}>
+                    <Modal.Title>Submission information list</Modal.Title>
+                    <Row>
+                        <Col>Name : </Col>
+                        <Col>Kathy</Col>
+                    </Row>
+                    <Row>
+                        <Col>NickName : </Col>
+                        <Col>private</Col>
+                    </Row>
+                    <Row>
+                        <Col>Age : </Col>
+                        <Col>25</Col>
+                    </Row>
+                    <Row>
+                        <Col>Gender : </Col>
+                        <Col>private</Col>
+                    </Row>
+                    <Row>
+                        <Col>Address : </Col>
+                        <Col>private</Col>
+                    </Row>
+                    <Row>
+                        <Col>Job : </Col>
+                        <Col>private</Col>
+                    </Row>
+
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShow(false)}>
+                        Back
+                    </Button>
+                </Modal.Footer>
+
             </Modal>
 
             {/* Mint STT Modal */}

@@ -27,3 +27,13 @@ font-family: Arial, sans-serif;
 color:black;
 font-family:'Times New Roman', Times, serif;
 }
+
+.login {
+  display: flex;
+  margin: auto;
+}
+
+.md{
+  display: flex;
+  margin: auto;
+}

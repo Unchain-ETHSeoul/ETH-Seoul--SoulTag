@@ -34,6 +34,10 @@ const Wallet = () => {
     const [currentAccount, setCurrentAccount] = useState(null);
     const [metamaksExist, setMetamaskExist] = useState(null);
 
+    const [moadlInfoshow, setModalInfoShow] = useState(false);
+    const handleinfoClose = () => setModalInfoShow(false);
+    const handleinfoShow = () => setModalInfoShow(true);
+
     const { chainedId, account, active, activate, deactivate } = useWeb3React();
     const handdleConnect = () => {
         if (active) {
@@ -47,11 +51,15 @@ const Wallet = () => {
         });
 
     }
+
+    let data = null;
+
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
 
     const [fullscreen_Mintmodal, setFullscreen_Mintmodal] = useState(true);
     const [show_Mintmodal, setShow_Mintmodal] = useState(false);
+
 
     //const [isSwitchOn, setIsSwitchOn] = useState(false);
 
@@ -142,6 +150,37 @@ const Wallet = () => {
         connectWallet();
     }, metamaksExist)
 
+    const makejsonobject = () => {
+        data = {
+            "event": "ETH Seoul",
+            "description": "Runs from: Aug 5 - 11, 2022, Registration ends: 03 AUGUST 2022, Hackathon ends: 11 AUGUST 2022",
+            "claims":{
+                "Name": "Bob",
+                "Nickname": "BtB",
+                "Age": "25",
+                "Address": "Seoul"
+            },
+            "verificationMethods": {
+                "Issure": "ETH Seoul",
+                "Type": "EcdsaSecp256k1VerificationKey2019",
+                "PublicKey": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+            },
+            "signature": "Gw4rkP6nWnNZVS66r9afyqrJSVp5km9R+O3Ie2YW1rtmabOVyO0LyfZRWiYGbzc5/HmlkZ4zWNiIrNPptWogBS1ovuGLUkkh+9tnURzDWEsIYgzhd91/0RlRgj5NE8PFHZ32RCwyPy3LccsGTCM1dcKErN/7XRdGmV+8HsgF5lShKmrjOl11ZLPotlgBLbYLMphWDogLrjc3Xo5/ib2rXSLvnjjGSf+WPe0zRtMYnQ4YR7cJFnknD38ejYWserFllTfvRkjKA2qOmxYYPfuIJMKKlFGJxu2GsDJXOphJ9sKz30D2fIlanczXGSgPf1JRtWeMsdhapRh4hEwJRTntag=="
+        }
+    }
+
+    const exportData = () => {
+        makejsonobject();
+        const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+            JSON.stringify(data)
+        )}`;
+        const link = document.createElement("a");
+        link.href = jsonString;
+        link.download = "data.json";
+        link.click();
+        handleinfoClose();
+    };
+
 
 
     return (
@@ -171,7 +210,7 @@ const Wallet = () => {
                         <Col>
                             <div>
                                 <Row>
-                                    <Col><Card.Title className='c' align='middle'>My Soulbound Token</Card.Title></Col>
+                                    <Col><Card.Title className='c' align='middle'>My Soulbound Token Retrieve</Card.Title></Col>
                                 </Row>
                                 <Row>
                                     <Col>
@@ -227,14 +266,14 @@ const Wallet = () => {
                                                         <Col>Address : </Col>
                                                         <Col>{isSwitchOn3 ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
                                                     </Row></S.SBT3></ListGroup.Item>
-                                                    <ListGroup.Item>
-                                                        <Row>
-                                                            <S.SBT4>
-                                                                <Button variant="secondary">ISSUE</Button>
-                                                            </S.SBT4>
-                                                        </Row>
+                                                <ListGroup.Item>
+                                                    <Row>
+                                                        <S.SBT4>
+                                                            <Button variant="secondary" onClick={handleinfoShow}>ISSUE</Button>
+                                                        </S.SBT4>
+                                                    </Row>
 
-                                                    </ListGroup.Item>
+                                                </ListGroup.Item>
                                             </ListGroup>
                                         </div>
                                         <div className='md'>
@@ -245,8 +284,8 @@ const Wallet = () => {
                                                         type="switch"
                                                         id="name"
                                                         label=""
-                                                        // onChange={onSwitchAction}
-                                                        // checked={isSwitchOn}
+                                                    // onChange={onSwitchAction}
+                                                    // checked={isSwitchOn}
                                                     /></Col>
                                                     <Col>Name : </Col>
                                                     <Col>{false ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
@@ -256,8 +295,8 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="nickname"
                                                             label=""
-                                                            // onChange={onSwitchAction1}
-                                                            // checked={isSwitchOn1}
+                                                        // onChange={onSwitchAction1}
+                                                        // checked={isSwitchOn1}
                                                         /></Col>
                                                         <Col>NickName : </Col>
                                                         <Col>{false ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
@@ -267,8 +306,8 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="age"
                                                             label=""
-                                                            // onChange={onSwitchAction2}
-                                                            // checked={isSwitchOn2}
+                                                        // onChange={onSwitchAction2}
+                                                        // checked={isSwitchOn2}
                                                         /></Col>
                                                         <Col>Age : </Col>
                                                         <Col>{false ? <span>25</span> : <span className='blurs'>25</span>}</Col>
@@ -278,19 +317,19 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="address"
                                                             label=""
-                                                            // onChange={onSwitchAction3}
-                                                            // checked={isSwitchOn3}
+                                                        // onChange={onSwitchAction3}
+                                                        // checked={isSwitchOn3}
                                                         /></Col>
                                                         <Col>Address : </Col>
                                                         <Col>{false ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
                                                     </Row></S.SBT3></ListGroup.Item>
-                                                    <ListGroup.Item>
-                                                        <Row>
-                                                            <S.SBT4>
-                                                                <Button variant="secondary">ISSUE</Button>
-                                                            </S.SBT4>
-                                                        </Row>
-                                                    </ListGroup.Item>
+                                                <ListGroup.Item>
+                                                    <Row>
+                                                        <S.SBT4>
+                                                            <Button variant="secondary">ISSUE</Button>
+                                                        </S.SBT4>
+                                                    </Row>
+                                                </ListGroup.Item>
                                             </ListGroup>
                                         </div>
                                         <div className='md'>
@@ -301,8 +340,8 @@ const Wallet = () => {
                                                         type="switch"
                                                         id="name"
                                                         label=""
-                                                        // onChange={onSwitchAction}
-                                                        // checked={isSwitchOn}
+                                                    // onChange={onSwitchAction}
+                                                    // checked={isSwitchOn}
                                                     /></Col>
                                                     <Col>Name : </Col>
                                                     <Col>{false ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
@@ -312,8 +351,8 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="nickname"
                                                             label=""
-                                                            // onChange={onSwitchAction1}
-                                                            // checked={isSwitchOn1}
+                                                        // onChange={onSwitchAction1}
+                                                        // checked={isSwitchOn1}
                                                         /></Col>
                                                         <Col>NickName : </Col>
                                                         <Col>{false ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
@@ -323,8 +362,8 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="age"
                                                             label=""
-                                                            // onChange={onSwitchAction2}
-                                                            // checked={isSwitchOn2}
+                                                        // onChange={onSwitchAction2}
+                                                        // checked={isSwitchOn2}
                                                         /></Col>
                                                         <Col>Age : </Col>
                                                         <Col>{false ? <span>25</span> : <span className='blurs'>25</span>}</Col>
@@ -334,19 +373,19 @@ const Wallet = () => {
                                                             type="switch"
                                                             id="address"
                                                             label=""
-                                                            // onChange={onSwitchAction3}
-                                                            // checked={isSwitchOn3}
+                                                        // onChange={onSwitchAction3}
+                                                        // checked={isSwitchOn3}
                                                         /></Col>
                                                         <Col>Address : </Col>
                                                         <Col>{false ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
                                                     </Row></S.SBT3></ListGroup.Item>
-                                                    <ListGroup.Item>
-                                                        <Row>
-                                                            <S.SBT4>
-                                                                <Button variant="secondary">ISSUE</Button>
-                                                            </S.SBT4>
-                                                        </Row>
-                                                    </ListGroup.Item>
+                                                <ListGroup.Item>
+                                                    <Row>
+                                                        <S.SBT4>
+                                                            <Button variant="secondary">ISSUE</Button>
+                                                        </S.SBT4>
+                                                    </Row>
+                                                </ListGroup.Item>
                                             </ListGroup>
                                         </div>
                                         <br /><br /><br />
@@ -432,58 +471,98 @@ const Wallet = () => {
             </Modal>
 
             {/* Mint STT Modal */}
-            {/* <Modal show={show_Mintmodal} fullscreen={fullscreen_Mintmodal} onHide={() => setShow_Mintmodal(false)}>
-            <Modal.Header closeButton>
-                <Modal.Title>Mint some STT Modal</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>ETH(example)</h4>
-                <p>Modal body content</p>
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim1(name)`}
-                />
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim2(age)`}
-                />
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim3(gender)`}
-                />
-                <h4>Header2(optional?)</h4>
-                <p>Modal body content</p>
-                <Form.Check
-                    type="switch"
-                    id="custom-switch"
-                    label="Include or not?"
-                    onChange={onSwitchAction}
-                    checked={isSwitchOn}
-                />
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim1(name)`}
-                    disabled={!isSwitchOn}
-                />
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim2(age)`}
-                    disabled={!isSwitchOn}
-                />
-                <Form.Check
-                    type="checkbox"
-                    id={`default-checkbox`}
-                    label={`claim3(gender)`}
-                    disabled={!isSwitchOn}
-                />
-                <Button onClick={() => printMsg("To be implemented...")}>Mint</Button>
-            </Modal.Body>
-        </Modal> */}
+            <Modal show={moadlInfoshow} onHide={() => handleinfoClose()}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Make SoulBound Token</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <S.ModalImg>
+                        <img src="./ETHSeoul.png" style={{ width: "500px", position: "relative", left: "-16px", top: "-20px" }}></img>
+                    </S.ModalImg>
+                    <h4>ETH Seoul</h4>
+                    <Card className="mb-3">
+                        <Card.Body>
+                            <div>Runs from: Aug 5 - 11, 2022</div>
+                            <div>Registration ends: 03 AUGUST 2022</div>
+                            <div>Hackathon ends: 11 AUGUST 2022</div>
+                        </Card.Body>
+                    </Card>
+
+                    <h4>Claims</h4>
+                    <Card className="mb-3">
+                        <ListGroup >
+                            <ListGroup.Item><Row>
+                                <Col><Form.Check
+                                    type="switch"
+                                    id="name"
+                                    label=""
+                                    onChange={onSwitchAction}
+                                    checked={isSwitchOn}
+                                /></Col>
+                                <Col>Name : </Col>
+                                <Col>{isSwitchOn ? <span>Bob</span> : <span className='blurs'>Bob</span>}</Col>
+                            </Row>
+                                <Row>
+                                    <Col><Form.Check
+                                        type="switch"
+                                        id="nickname"
+                                        label=""
+                                        onChange={onSwitchAction1}
+                                        checked={isSwitchOn1}
+                                    /></Col>
+                                    <Col>NickName : </Col>
+                                    <Col>{isSwitchOn1 ? <span>BtB</span> : <span className='blurs'>Btb</span>}</Col>
+                                </Row>
+                                <Row>
+                                    <Col><Form.Check
+                                        type="switch"
+                                        id="age"
+                                        label=""
+                                        onChange={onSwitchAction2}
+                                        checked={isSwitchOn2}
+                                    /></Col>
+                                    <Col>Age : </Col>
+                                    <Col>{isSwitchOn2 ? <span>25</span> : <span className='blurs'>25</span>}</Col>
+                                </Row>
+                                <Row>
+                                    <Col><Form.Check
+                                        type="switch"
+                                        id="address"
+                                        label=""
+                                        onChange={onSwitchAction3}
+                                        checked={isSwitchOn3}
+                                    /></Col>
+                                    <Col>Address : </Col>
+                                    <Col>{isSwitchOn3 ? <span>Seoul</span> : <span className='blurs'>Seoul</span>}</Col>
+                                </Row></ListGroup.Item>
+                        </ListGroup>
+                    </Card>
+
+                    <h4>Verification Methods</h4>
+                    <Card className="mb-3">
+                        <Card.Body>
+                            <div>Issure: ETH Seoul</div>
+                            <div>Type: EcdsaSecp256k1VerificationKey2019</div>
+                            <div className='onl'>Publickey: H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV</div>
+                        </Card.Body>
+                    </Card>
+                    <h4>Signature</h4>
+                    <Card className="mb-3">
+                        <Card.Body>
+                            <div className='onl'>Gw4rkP6nWnNZVS66r9afyqrJSVp5km9R+O3Ie2YW1rtmabOVyO0LyfZRWiYGbzc5/HmlkZ4zWNiIrNPptWogBS1ovuGLUkkh+9tnURzDWEsIYgzhd91/0RlRgj5NE8PFHZ32RCwyPy3LccsGTCM1dcKErN/7XRdGmV+8HsgF5lShKmrjOl11ZLPotlgBLbYLMphWDogLrjc3Xo5/ib2rXSLvnjjGSf+WPe0zRtMYnQ4YR7cJFnknD38ejYWserFllTfvRkjKA2qOmxYYPfuIJMKKlFGJxu2GsDJXOphJ9sKz30D2fIlanczXGSgPf1JRtWeMsdhapRh4hEwJRTntag==</div>
+                        </Card.Body>
+                    </Card>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleinfoClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={exportData}>
+                        Export
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </S.Container>
     )
 }

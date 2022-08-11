@@ -40,3 +40,11 @@ color:black;
   text-shadow: 0 0 10px black;
   color: transparent;
 }
+
+.onl{
+  display: block;
+  width: 430px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -38,8 +38,6 @@ export const SBT1 = styled.div`
 
 export const SBT2 = styled.div`
     width: 300px;
-    white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 `
 
@@ -60,4 +58,8 @@ export const ColGap = styled.div`
     margin-right: 10px;
     line-height: 30px;
     vertical-align: middle;
+`
+
+export const ModalImg = styled.div`
+    width: 500px;
 `

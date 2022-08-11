@@ -597,7 +597,7 @@ const Host = () => {
                     <Button variant="secondary" onClick={handleregiClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={hostEvent} disabled={allinput()} href="/h0st">
+                    <Button variant="primary" onClick={hostEvent}  href="/h0st">
                         HOST!
                     </Button>
                 </Modal.Footer>

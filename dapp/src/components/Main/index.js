@@ -97,7 +97,6 @@ const Main = () => {
         console.log(isSwitchOn);
     };
 
-
     function submitbtn() {
         handleregiClose();
         sbm=true;
@@ -116,7 +115,7 @@ const Main = () => {
                         <S.MainUi>
                             <ListGroup horizontal>
                                 <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
-                                <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
+                                <ListGroup.Item><S.Account2>{active ? submitbtn : "-"}</S.Account2></ListGroup.Item>
                             </ListGroup>
                         </S.MainUi>
                     </Col>

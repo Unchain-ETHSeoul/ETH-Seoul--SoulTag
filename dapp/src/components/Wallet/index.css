@@ -11,7 +11,6 @@
 
 .a {
 color: white;
-font-family: Georgia, serif;
 }
 
 .b {
@@ -20,12 +19,10 @@ box-shadow: 3px 3px 5px;
 
 .c {
 color:white;
-font-family: Arial, sans-serif;
 }
 
 .d {
 color:black;
-font-family:'Times New Roman', Times, serif;
 }
 
 .login {
@@ -36,4 +33,10 @@ font-family:'Times New Roman', Times, serif;
 .md{
   display: flex;
   margin: auto;
+}
+
+.blurs {
+  color: black;
+  text-shadow: 0 0 10px black;
+  color: transparent;
 }

@@ -57,7 +57,7 @@ import contract_SoulTag from "../../artifacts/contracts/SoulTag.sol/SoulTagPrac2
 const contractAddress = "0xf31969aa4ed63b403d030f6528eb14d6209d8492";
 const abi = contract_SoulTag.abi;
 
-const Host = () => {
+const H0st = () => {
     const [currentAccount, setCurrentAccount] = useState(null); 
     const [unsignedChallengerList, setUnsignedChallengerList] = useState(null); 
     const [metamaksExist, setMetamaskExist] = useState(null);
@@ -511,7 +511,7 @@ const Host = () => {
                     <Col>
                         <S.MainUi>
                             <ButtonGroup aria-label="Basic example">
-                                <Button variant="outline-warning" href='/host'>&emsp;Host&emsp;</Button>
+                                <Button variant="outline-warning" href='/h0st'>&emsp;Host&emsp;</Button>
                                 <Button variant="outline-warning" href='/'>&ensp;Main&ensp;</Button>
                                 <Button variant="outline-warning" href='/partici'>Participants</Button>
                             </ButtonGroup>
@@ -532,7 +532,7 @@ const Host = () => {
             {/* -- Main Menu -- */}
             <Container>
                 <Row>
-                    {/* <S.EventUI className='im' onClick={Partici}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI> */}
+                    <S.EventUI className='im' onClick={Partici}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI>
                     {isadded ? newevent() : null}
                     <S.EventUI className='im' onClick={AddEvent}> + </S.EventUI>
                     {/* switch */}
@@ -597,7 +597,7 @@ const Host = () => {
                     <Button variant="secondary" onClick={handleregiClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={hostEvent} disabled={allinput()} href="/h0st">
+                    <Button variant="primary" onClick={hostEvent} disabled={allinput()}>
                         HOST!
                     </Button>
                 </Modal.Footer>
@@ -643,4 +643,4 @@ const Host = () => {
         </S.Container>
     )
 }
-export default Host;
+export default H0st;

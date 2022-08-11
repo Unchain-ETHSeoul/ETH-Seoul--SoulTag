@@ -16,9 +16,8 @@ export const Account1 = styled.div`
 `
 
 export const Account2 = styled.div`
-    width: 100px;
+    width: 500px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
 `
 
@@ -45,14 +44,14 @@ export const SBT2 = styled.div`
 `
 
 export const SBT3 = styled.div`
-    width: 100px;
+    width: 200px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `
 
 export const SBT4 = styled.div`
-    width: 100px;
+    line-height: 100px;
     white-space: nowrap;
     overflow: hidden;
 `

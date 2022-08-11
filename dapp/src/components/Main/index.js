@@ -122,9 +122,8 @@ const Main = () => {
                     <Col>
                         <S.MainUi>
                             <ButtonGroup aria-label="Basic example">
-                                <Button variant="secondary" href='/host'>Host</Button>
-                                <Button variant="secondary" href='/wallet'>Wallet</Button>
-                                <Button variant="secondary" href='/partici'>Participants</Button>
+                                <Button variant="outline-warning" href='/host'>&emsp;Host&emsp;</Button>
+                                <Button variant="outline-warning" href='/'>&ensp;Main&ensp;</Button>
                             </ButtonGroup>
                         </S.MainUi>
                     </Col>

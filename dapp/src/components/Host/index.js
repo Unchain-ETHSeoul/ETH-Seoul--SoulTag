@@ -513,7 +513,6 @@ const Host = () => {
                             <ButtonGroup aria-label="Basic example">
                                 <Button variant="outline-warning" href='/host'>&emsp;Host&emsp;</Button>
                                 <Button variant="outline-warning" href='/'>&ensp;Main&ensp;</Button>
-                                <Button variant="outline-warning" href='/partici'>Participants</Button>
                             </ButtonGroup>
                         </S.MainUi>
                     </Col>

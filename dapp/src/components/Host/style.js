@@ -52,17 +52,20 @@ export const SBT3 = styled.div`
 `
 
 export const EventUI = styled.div`
-    display: inline-block;
+    display: block;
     width: 250px;
     height: 300px;
-    background-color: white;
-    border: 2px yellow solid;
-    box-shadow: 5px 10px 20px red;
+    line-height: 300px;
+    vertical-align: middle;
+    background-color: #111111;
+    border: 2px #88880033 solid;
+    box-shadow: 0px 0px 10px #88660088;
     border-radius: 10px;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 10px;
-    vertical-align: middle;
+    font-size: 4rem;
+    color: #BBBBBB;
 `
 
 export const MainUi = styled.div`
@@ -91,11 +94,14 @@ export const Property = styled.div`
 `
 
 export const ColGap = styled.div`
+    display: block;
     margin-right: 10px;
+    line-height: 30px;
+    vertical-align: middle;
 `
 
 export const PersonContainer = styled.div`
-    
+
 `
 
 export const Person = styled.div`

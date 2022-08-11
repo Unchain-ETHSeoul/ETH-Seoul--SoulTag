@@ -28,6 +28,7 @@ import ColoredHR from '../Elements/ColoredHR';
 
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Alert from 'react-bootstrap/Alert';
 // import Button from 'react-bootstrap/Button';
 // import Modal from 'react-bootstrap/Modal';
 
@@ -63,6 +64,10 @@ const Host = () => {
     const [modaleventshow, setmodaleventShow] = useState(false);
     const handlemodaleventClose = () => setmodaleventShow(false);
     const handlmodaleeventShow = () => setmodaleventShow(true);
+
+    const [modalthirdshow, setmodalthirdShow] = useState(false);
+    const handlemodalthirdClose = () => setmodalthirdShow(false);
+    const handlmodalethirdShow = () => setmodalthirdShow(true);
 
     // const [fileImg, setFileImg] = useState(null);
 
@@ -126,6 +131,7 @@ const Host = () => {
         sendImageToIPFSPinata();
         console.log(events);
         hostClose();
+        setIsadded(true);
     }
 
     function hostClose() {
@@ -287,8 +293,9 @@ const Host = () => {
             console.log("Token URI", tokenURI);
             //mintNFT(tokenURI, currentAccount)   // pass the winner
 
-            const result = JSON.parse(tokenURI.toString());
-            console.log(result);
+            //const result = JSON.parse(tokenURI.toString());
+            //console.log(result);
+            handleregiClose();
 
         } catch (error) {
             console.log("ERROR: ")
@@ -363,95 +370,19 @@ const Host = () => {
                     <Card>
                         <Card.Body>
                             <Container>
-                                <Row className="mb-2">
+                                <Row className="mb-1">
                                     <Col>Name : </Col>
                                     <Col>private</Col>
                                 </Row>
-                                <Row className="mb-2">
+                                <Row className="mb-1">
                                     <Col>Nickname : </Col>
-                                    <Col>Kathy</Col>
+                                    <Col>KC</Col>
                                 </Row>
-                                <Row className="mb-2">
+                                <Row className="mb-1">
                                     <Col>Age : </Col>
                                     <Col>private</Col>
                                 </Row>
-                                <Row className="mb-2">
-                                    <Col>Address : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                            </Container>
-                        </Card.Body>
-                    </Card>
-                </S.Person>
-                <S.Person className="mb-3">
-                    <Card>
-                        <Card.Body>
-                            <Container>
-                                <Row className="mb-2">
-                                    <Col>Name : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Nickname : </Col>
-                                    <Col>Kathy</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Age : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Address : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                            </Container>
-                        </Card.Body>
-                    </Card>
-                </S.Person>
-                <S.Person className="mb-3">
-                    <Card>
-                        <Card.Body>
-                            <Container>
-                                <Row className="mb-2">
-                                    <Col>Name : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Nickname : </Col>
-                                    <Col>Kathy</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Age : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Address : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                            </Container>
-                        </Card.Body>
-                    </Card>
-                </S.Person>
-                <S.Person className="mb-3">
-                    <Card>
-                        <Card.Body>
-                            <Container>
-                                <Row className="mb-2">
-                                    <Col>Name : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Nickname : </Col>
-                                    <Col>Kathy</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Age : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
-                                    <Col>Address : </Col>
-                                    <Col>private</Col>
-                                </Row>
-                                <Row className="mb-2">
+                                <Row className="mb-1">
                                     <Col>Address : </Col>
                                     <Col>private</Col>
                                 </Row>
@@ -469,67 +400,35 @@ const Host = () => {
     function newevent() {
         return (
             <>
-                <S.EventUI onClick={ViewEvent}>dd</S.EventUI>
-                <Modal show={moadlMakeshow} onHide={handleregiClose}>
+                <S.EventUI className='im' onClick={handlmodalethirdShow}><img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "150px" }}></img></S.EventUI>
+                <Modal show={modalthirdshow} onHide={handlemodalthirdClose}>
                     <Modal.Header closeButton gap={3}>
-                        <Modal.Title><S.ColGap>Event: </S.ColGap></Modal.Title>
-                        <Form>
-                            <Form.Control
-                                type="text"
-                                placeholder="Title"
-                                onChange={e => {
-                                    //console.log("e.target.value: "+ e.target.value + ", "+index);
-                                    //setType(e.target.value);
-                                    //eventname = e.target.value;
-                                    //console.log(e.target.value.length);
-                                    setEventname(e.target.value);
-                                }}
-                            />
-                        </Form>
+                        <Modal.Title><S.ColGap>Filecoin 2022<img src="https://gateway.pinata.cloud/ipfs/QmYFLAuKx7AspjzgVActznhm78Lt99u1Gs6WCZSTJ6ZMKT/filecoin-fil-logo.png" style={{ height: "25px", marginLeft: "20px" }}></img></S.ColGap></Modal.Title>
                     </Modal.Header>
+                    <Modal.Body>
+                    <Modal.Title><S.ColGap>Informations</S.ColGap></Modal.Title>
+                    <Card className="mb-3">
+                        <Card.Body>
+                            <Container>
+                                <div>Registration: 2022</div>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                    <Modal.Title ><S.ColGap>Participants List</S.ColGap></Modal.Title>
+                    <Form>
+                        {/*drawprops()*/}
+                        {partilist()}
+                    </Form>
                     <Modal.Body gap={3}>
-                        <Form>
-                            <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Script</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={2}
-                                    onChange={e => {
-                                        //console.log("e.target.value: "+ e.target.value + ", "+index);
-                                        //setType(e.target.value);
-                                        //eventname = e.target.value;
-                                        //console.log(e.target.value.length);
-                                        setScript(e.target.value);
-                                    }}
-                                />
-                            </Form.Group>
-                        </Form>
-                        <Form>
-                            <Form.Group controlId="formFilelogo" className="mb-3">
-                                <Form.Label>Logo Image</Form.Label>
-                                <Form.Control
-                                    type="file"
-                                    //label={logofileName}
-                                    onChange={(e) => {
-                                        setlogoPhoto(e.target.files[0]);
-                                    }}
-                                />
-                            </Form.Group>
-                        </Form>
-                        <Form>
-                            {drawprops()}
-                        </Form>
 
-                        <Button variant="primary" size="sm" onClick={addProp}>
-                            +
-                        </Button>{' '}
-                    </Modal.Body>
+                </Modal.Body>
+                </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleregiClose}>
+                        <Button variant="secondary" onClick={handlemodalthirdClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={hostEvent} disabled={allinput()}>
-                            HOST!
+                        <Button variant="primary" onClick={handlemodalthirdClose}>
+                            Confirmed
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -539,12 +438,12 @@ const Host = () => {
 
     return (
         <S.Container>
-            <h1><a href='/' className='pageName'>Host</a></h1>
+            <h1><a href='/' className='pageName' >Host</a></h1>
             <Container>
                 <Row>
                     <Col sm>
                         <S.MainUi>
-                            <ListGroup horizontal>
+                            <ListGroup horizontal >
                                 <ListGroup.Item><S.Account1>Account</S.Account1></ListGroup.Item>
                                 <ListGroup.Item><S.Account2>{active ? account : "-"}</S.Account2></ListGroup.Item>
                             </ListGroup>
@@ -574,9 +473,9 @@ const Host = () => {
             {/* -- Main Menu -- */}
             <Container>
                 <Row>
-                    <S.EventUI onClick={Partici}>asdf</S.EventUI>
+                    <S.EventUI className='im' onClick={Partici}><IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "150px" }}></IpfsImage></S.EventUI>
                     {isadded ? newevent() : null}
-                    <S.EventUI onClick={AddEvent}> + </S.EventUI>
+                    <S.EventUI className='im' onClick={AddEvent}> + </S.EventUI>
                     {/* switch */}
                 </Row>
             </Container>
@@ -656,34 +555,32 @@ const Host = () => {
             {/* Event manage modal  == >  Event manage */}
             <Modal show={modaleventshow} onHide={handlemodaleventClose}>
                 <Modal.Header closeButton gap={3}>
-                    <Modal.Title><S.ColGap>Participants list</S.ColGap></Modal.Title>
-                    <Form>
-
-                    </Form>
+                    <Modal.Title><S.ColGap>Eth Seoul 2022<IpfsImage hash='QmaUwMyVAfZEWnPNiVrWAivrx2dUaSHB9DmR3a2GagzehX' gatewayUrl='https://gateway.pinata.cloud/ipfs' style={{ height: "25px", marginLeft: "20px" }}></IpfsImage></S.ColGap></Modal.Title>
                 </Modal.Header>
+                <Modal.Body>
+                    <Modal.Title><S.ColGap>Informations</S.ColGap></Modal.Title>
+                    <Card>
+                        <Card.Body>
+                            <Container>
+                                <div>Runs from: Aug 5 - 11, 2022</div>
+                                <div>Registration starts: 20 JULY 2022</div>
+                                <div>Registration ends: 03 AUGUST 2022</div>
+                                <div>Hackathon starts: 05 AUGUST 2022</div>
+                                <div>Hackathon ends: 11 AUGUST 2022</div>
+                            </Container>
+                        </Card.Body>
+                    </Card>
+                </Modal.Body>
                 <Modal.Body gap={3}>
-                    <Form>
-
-                    </Form>
-                    <Form>
-
-                    </Form>
+                    <Modal.Title><S.ColGap>Participants List</S.ColGap></Modal.Title>
                     <Form>
                         {/*drawprops()*/}
                         {partilist()}
                     </Form>
-                    {/*
-                    <Button variant="primary" size="sm" onClick={addProp}>
-                        +
-                    </Button>{' '}
-                     */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handlemodaleventClose}>
                         Close
-                    </Button>
-                    <Button variant="primary" onClick={handlemodaleventClose}>
-                        Confirmed
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -108,7 +108,7 @@ const Main = () => {
 
     return (
         <S.Container className='App'>
-            <h1><a href='/' className='pageName'>Bleem</a></h1>
+            <h1><a href='/' className='pageName'>Main</a></h1>
             <Container>
                 <Row>
                     <Col sm>

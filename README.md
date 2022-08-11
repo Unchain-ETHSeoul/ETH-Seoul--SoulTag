@@ -2,9 +2,7 @@
 - ETH Seoul 2022 Hackathon Results
 - Produced by Team Unchain
 
-## Description
-
-
+## Used Technology Stack
 <img width="400" alt="스크린샷 2022-08-11 오후 11 18 35" src="https://user-images.githubusercontent.com/66289619/184155436-4064c83a-529d-40e6-9aa1-11ae00ccdcf0.png">
 <img width="400" alt="스크린샷 2022-08-11 오후 11 19 49" src="https://user-images.githubusercontent.com/66289619/184155465-3ba775ad-f8bb-429f-84fd-00878d23b8fc.png">
 
@@ -17,7 +15,52 @@
 
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
 
- (introduce our project…)
+## Project Description
+
+### Reasons for creating this project:
+We have recognized that too much of our personal information is abused in our daily lives. Our information is being processed and sold by unreliable third parties. But we are too defenseless on these issues. Blockchain has brought information transparency, but the protection of personal data has not yet been achieved. This is the biggest wall that blockchain has to overcome in order to be applied in reality. Our experimental protocol design makes it possible to achieve self-soverign identity (SSI) by delegating privacy and privacy rights to individuals. We make many things possible, such as data selling and rental, through this point. Also, this will solve the flaws of nft and maximize the performance. It is expected that many problems of the Defi ecosystem can also be solved based on the utilization of this protocol.
+
+### Methodology:
+We propose a protocol that achieves both anonymity and confidentiality without using zkp. This protocol allows us to achieve SSI. There are two protocols we propose. One is a least-responsible protocol that does not use stealth addresses and has confidentiality and anonymity. The second is an irresponsible protocol that uses stealth addresses to maintain confidentiality and anonymity.
+
+#### 1. Least Responsibility Protocol with confidentiality and anonymity without using stealth addresses
+
+- A protocol that can protect confidentiality and personal information by selectively disclosing the non-transferable NFT (Soul Bound Token) containing personal information, object identification, and personal information contained therein, and a recovery method were also presented. Through this protocol, we can achieve self-soverign identity (SSI).
+
+- In order to achieve SSI, two preemptive tasks must be resolved. It is anonymity and privacy. We use this protocol to achieve two things: minimal anonymity and privacy. In this case, minimum anonymity means anonymity that is difficult to specify off-chain. It is not intended to guarantee anonymity by using stealth addresses for unique identifiers on-chain.
+
+- The anonymity achieved by using a stealth address can achieve complete confidentiality, but I think that it is highly likely to be abused by society. So, we believe that at least the information of the departure and destination addresses to which the encrypted personal information is transferred should be disclosed. Therefore, while address disclosure is not completely confidential, it is a minimal line of defense against any potential abuse. Also, we encrypted the contents for authentication using an asymmetric key. The party who authorizes this uses their private key to sign and re-stores the document that discloses the public key, which is a signature verification method, on the block chain. Here, since claims are encrypted with the holder's private key, only the person in charge of the personal information can open it, so personal information control is completely possible. In addition, by selectively disclosing the sbt issued in this way in the future, sovereignty control over personal information can be achieved once again.
+
+- We envisioned a scenario in which we applied this protocol. Now the idea of this scenario stems from the discomfort we experienced when entering this hackathon venue. This problem is due to the primitive verification method. The names of the participants on the excel sheet and the participants themselves were asked. If the name you answered at that time and the name on the list match, you were allowed to enter. At this time, there were several participants from foreign countries who registered but had difficulties in entering because their names were lost from the list. Also, the possibility that someone enters by saying someone else's name cannot be ruled out. Therefore, security was very weak, and the possibility of losing my personal information could not be excluded if the list they had was lost. We also questioned the ability to identify ourselves by writing down our real names. This actually does not protect my personal information and allows it to be disclosed to anyone.
+
+- However, the Soul Tag (Sbt) issued by applying this protocol we made identifies us as a unique object, so if we only show this Soul Tag, we selectively show our identity information to guarantee the right to control my personal information You can receive and verify your identity. Also, during the hackathon, you can selectively disclose your information during ice-breaking time and prove to other participants that you are a participant in this hackathon.
+
+####2. Responsible protocol using stealth addresses to keep confidentiality and anonymity
+
+- This protocol achieves complete anonymity and confidentiality through stealth addresses that do not disclose addresses. Since the address cannot be specified, the personal information contained in the transmitted sbt can be completely protected. However, the problem is that people who use this protocol for malicious purposes are also untraceable. Therefore, in order to proceed in the right direction, it is recommended to use protocol 1 rather than this method using a stealth address. The difference between protocol 1 and protocol 2 is whether or not a stealth address is used.
+ 
+The detailed preparation method of the protocol is as follows.
+
+Manufacturing method
+
+How to use the protocol
+
+### Applied in generality meeting
+
+When you need to identify for a one-time event
+
+#### 1. One-time ticket to ensure anonymity and authenticate yourself
+   Method: Personal information protection authentication can be achieved by issuing a one-time ticket sbt and disclosing the minimum information required for authentication.
+
+#### 2. One-time ID that can guarantee anonymity and authenticate yourself
+Method: One-time identification card for refugees (refugees can achieve identification and anonymity only with the sbt issued by itself)
+
+#### 3. Anonymous Electronic Voting
+Method: Because transfer is impossible, their rights cannot be transferred and only sbt ownership can identify them.
+
+### Organize
+
+As a methodology for achieving SSI, we presented two protocols. Achieving SSI requires reconciling anonymity and confidentiality. This protocol presents a solution that can solve the fundamental problems of the nft and defi ecosystems. Additionally, it may be difficult for the establishment of SSI to find a connection point for a solution to the problem of defi and nft. However, if you apply sbt to reality as above, you will understand naturally.
  
 ## Environment
  (introduce our project environment…)

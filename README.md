@@ -3,9 +3,6 @@
 - Produced by Team Unchain
 
 ## Used Technology Stack
-<img width="400" alt="스크린샷 2022-08-11 오후 11 18 35" src="https://user-images.githubusercontent.com/66289619/184155436-4064c83a-529d-40e6-9aa1-11ae00ccdcf0.png">
-<img width="400" alt="스크린샷 2022-08-11 오후 11 19 49" src="https://user-images.githubusercontent.com/66289619/184155465-3ba775ad-f8bb-429f-84fd-00878d23b8fc.png">
-
 
 <img src="https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white"> <img src="https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=Solidity&logoColor=white"> <img src="https://img.shields.io/badge/IPFS-65C2CB?style=for-the-badge&logo=IPFS&logoColor=white">
 
@@ -16,6 +13,10 @@
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
 
 ## Project Description
+
+### Ideas
+from https://github.com/Nerolation/EIP-ERC-721-Stealth-Addresses/blob/271a3b4651f73bac9ec32621abb0eb1308a8c79f/eip.md;
+<img src="https://user-images.githubusercontent.com/66289619/184173794-0e02e150-e35d-48ea-9c7a-d8bd12f89cf0.png">
 
 ### Reasons for creating this project:
 We have recognized that too much of our personal information is abused in our daily lives. Our information is being processed and sold by unreliable third parties. But we are too defenseless on these issues. Blockchain has brought information transparency, but the protection of personal data has not yet been achieved. This is the biggest wall that blockchain has to overcome in order to be applied in reality. Our experimental protocol design makes it possible to achieve self-soverign identity (SSI) by delegating privacy and privacy rights to individuals. We make many things possible, such as data selling and rental, through this point. Also, this will solve the flaws of nft and maximize the performance. It is expected that many problems of the Defi ecosystem can also be solved based on the utilization of this protocol.
@@ -61,18 +62,15 @@ Method: Because transfer is impossible, their rights cannot be transferred and o
 ### Organize
 
 As a methodology for achieving SSI, we presented two protocols. Achieving SSI requires reconciling anonymity and confidentiality. This protocol presents a solution that can solve the fundamental problems of the nft and defi ecosystems. Additionally, it may be difficult for the establishment of SSI to find a connection point for a solution to the problem of defi and nft. However, if you apply sbt to reality as above, you will understand naturally.
- 
-## Environment
- (introduce our project environment…)
- 
-## Prerequisite
- (intruduce additional package, or dependencies…)
-
-## Files
- (introduce our KEY(main) files…)
 
 ## Usage
- (introduce how to execute our project…)
+```
+cd dapp
+npm install
+npm install hardhat
+npm hardhat compile
+npm start
+```
 
 ## Tracks we participated in
 ### Main Tracks
@@ -84,10 +82,13 @@ As a methodology for achieving SSI, we presented two protocols. Achieving SSI re
 
 ### Sponsor Tracks
 - IPFS & Filecoin
-- Polygon
 
 ## Contributers
 - Team Unchain
+
+## Example Images
+<img width="500" alt="스크린샷 2022-08-11 오후 11 18 35" src="https://user-images.githubusercontent.com/66289619/184155436-4064c83a-529d-40e6-9aa1-11ae00ccdcf0.png">
+<img width="500" alt="스크린샷 2022-08-11 오후 11 19 49" src="https://user-images.githubusercontent.com/66289619/184155465-3ba775ad-f8bb-429f-84fd-00878d23b8fc.png">
 
 ## Presentation Images
 <img width="500" alt="스크린샷 2022-08-11 오후 11 19 49" src="https://user-images.githubusercontent.com/66289619/184172479-e209efc9-13a9-4363-bbd7-6c246010288e.png">

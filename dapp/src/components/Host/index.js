@@ -429,6 +429,7 @@ const Host = () => {
                         </Button>
                         <Button variant="primary" onClick={handlemodalthirdClose}>
                             Confirmed
+
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -479,10 +480,6 @@ const Host = () => {
                     {/* switch */}
                 </Row>
             </Container>
-
-
-
-
             {/* Event make modal  == >  Event add */}
             <Modal show={moadlMakeshow} onHide={handleregiClose}>
                 <Modal.Header closeButton gap={3}>

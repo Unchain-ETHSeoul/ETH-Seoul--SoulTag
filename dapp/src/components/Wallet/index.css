@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.writingColor {
+  color: white;
+}
+
+.a {
+color: white;
+}
+
+.b {
+box-shadow: 3px 3px 5px;
+}
+
+.c {
+color:white;
+}
+
+.d {
+color:black;
+}
+
+.login {
+  display: flex;
+  margin: auto;
+}
+
+.md{
+  display: flex;
+  margin: auto;
+}
+
+.blurs {
+  color: black;
+  text-shadow: 0 0 10px black;
+  color: transparent;
+}
+
+.onl{
+  display: block;
+  width: 430px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

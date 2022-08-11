@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
+.a {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: large;
+}
+
+.a-1 {
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.b {
+  box-shadow: 3px 3px 5px;
+}
+
+.c {
+  color:white;
+  font-family: Arial, sans-serif;
+}
+
+.d {
+  color:black;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.nav-tabs .nav-link {
+  background-color: transparent;
+  color: #aa00dd !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  
+}
+
+.nav-tabs .nav-link.active {
+  background-color: cadetblue;
+  border-bottom: solid 4px white !important; 
+}
+
+.pageName {
+  color: white;
+  font-family:'Noto Serif', serif;
+  font-size: 3cm;
+  text-decoration: none;
+}
+
+.pageColor {
+  background-color: #2c2c2c;
+  color: yellow;
+}
+
+/* 마우스 올렸을 시 변화없음 */
+a:hover { 
+  color: white !important 
+}
+
+.nav-tabs .nav-link {
+  color: #CFB337 !important;
+  
+}
+
+.nav-tabs .nav-link.active {
+  background-color: cadetblue;
+  border-bottom: solid 4px white !important; 
+}
+
+.im {
+  transition: transform .2s;
+  margin: 0 auto;
+}
+  
+.im:hover {
+  transform: scale(1.1);
+}

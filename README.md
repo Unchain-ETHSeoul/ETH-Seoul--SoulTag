@@ -15,7 +15,7 @@
 ## Project Description
 
 ### Ideas
-from https://github.com/Nerolation/EIP-ERC-721-Stealth-Addresses/blob/271a3b4651f73bac9ec32621abb0eb1308a8c79f/eip.md;
+from https://github.com/Nerolation/EIP-ERC-721-Stealth-Addresses/blob/271a3b4651f73bac9ec32621abb0eb1308a8c79f/eip.md
 <img src="https://user-images.githubusercontent.com/66289619/184173794-0e02e150-e35d-48ea-9c7a-d8bd12f89cf0.png">
 
 ### Reasons for creating this project:
@@ -82,6 +82,17 @@ npm start
 
 ### Sponsor Tracks
 - IPFS & Filecoin
+
+#### Pinata storage
+
+<img src="https://user-images.githubusercontent.com/66289619/184304961-b61ff640-d02f-4245-8677-44d3f5e6218b.png">
+
+#### IPFS used at: https://github.com/Unchain-ETHSeoul/ETH-Seoul--SoulTag/blob/main/dapp/src/components/Host/index.js
+
+<img src="https://user-images.githubusercontent.com/66289619/184304977-86f0584f-8614-42a8-b321-8a96cd4ed0b0.png">
+<img src="https://user-images.githubusercontent.com/66289619/184304986-637e86d0-81de-496d-8946-c72d8df1f64d.png">
+
+
 
 ## Contributers
 - Team Unchain

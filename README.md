@@ -36,7 +36,7 @@ We propose a protocol that achieves both anonymity and confidentiality without u
 
 - However, the Soul Tag (Sbt) issued by applying this protocol we made identifies us as a unique object, so if we only show this Soul Tag, we selectively show our identity information to guarantee the right to control my personal information You can receive and verify your identity. Also, during the hackathon, you can selectively disclose your information during ice-breaking time and prove to other participants that you are a participant in this hackathon.
 
-#### 2. Responsible protocol using stealth addresses to keep confidentiality and anonymity
+#### 2. Unresponsible protocol using stealth addresses to keep confidentiality and anonymity
 
 - This protocol achieves complete anonymity and confidentiality through stealth addresses that do not disclose addresses. Since the address cannot be specified, the personal information contained in the transmitted sbt can be completely protected. However, the problem is that people who use this protocol for malicious purposes are also untraceable. Therefore, in order to proceed in the right direction, it is recommended to use protocol 1 rather than this method using a stealth address. The difference between protocol 1 and protocol 2 is whether or not a stealth address is used.
  

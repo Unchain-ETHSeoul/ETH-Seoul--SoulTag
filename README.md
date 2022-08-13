@@ -26,6 +26,9 @@ We propose a protocol that achieves both anonymity and confidentiality without u
 
 ### Why we don't use zkp
 
+We personally prefer the lightweight method. When zkp is added, it becomes very computation heavy.
+From a user's point of view, you can selectively discard it from one Soul Tag(SBT) to create a Verification document, or you can combine multiple selected Soul Tags(SBT) to create a Verification document. zkp is very slow and uncomfortable, while our protocol becomes fast and comfortable.
+
 #### 1. Least Responsibility Protocol with confidentiality and anonymity without using stealth addresses
 
 - A protocol that can protect confidentiality and personal information by selectively disclosing the non-transferable NFT (Soul Bound Token) containing personal information, object identification, and personal information contained therein, and a recovery method were also presented. Through this protocol, we can achieve self-soverign identity (SSI).

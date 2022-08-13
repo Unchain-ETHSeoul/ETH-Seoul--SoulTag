@@ -24,6 +24,8 @@ We have recognized that too much of our personal information is abused in our da
 ### Methodology:
 We propose a protocol that achieves both anonymity and confidentiality without using zkp. This protocol allows us to achieve SSI. There are two protocols we propose. One is a least-responsible protocol that does not use stealth addresses and has confidentiality and anonymity. The second is an irresponsible protocol that uses stealth addresses to maintain confidentiality and anonymity.
 
+### Why we don't use zkp
+
 #### 1. Least Responsibility Protocol with confidentiality and anonymity without using stealth addresses
 
 - A protocol that can protect confidentiality and personal information by selectively disclosing the non-transferable NFT (Soul Bound Token) containing personal information, object identification, and personal information contained therein, and a recovery method were also presented. Through this protocol, we can achieve self-soverign identity (SSI).
